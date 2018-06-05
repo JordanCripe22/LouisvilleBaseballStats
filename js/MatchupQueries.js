@@ -1,5 +1,5 @@
 
-//Jordan New
+
 function mergeSort(list){
     if (list.length === 1){
         return list;
@@ -12,7 +12,7 @@ function mergeSort(list){
     }//if/else;
 }//mergeSort
 
-//Jordan New
+
 function merge(list1, list2){
     let combinedList = [];
     while (list1.length > 0 && list2.length > 0){
