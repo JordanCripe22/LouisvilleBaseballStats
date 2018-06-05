@@ -1,29 +1,41 @@
 
-
 function mergeSort(list){
     if (list.length === 1){
         return list;
     } else {
-        let list2 = list.splice(Math.floor(list.length/2));
-        let list1 = list;
+        let list1 = list.splice(0, Math.floor(list.length/2));
+        let list2 = list
+
         list1 = mergeSort(list1);
         list2 = mergeSort(list2);
-        return merge(list1, list2);
-    }//if/else;
-}//mergeSort
 
+        return merge(list1, list2);
+    }//if/else:
+}//mergeSort
 
 function merge(list1, list2){
     let combinedList = [];
     while (list1.length > 0 && list2.length > 0){
-        if (list1[0].compare(list2[0])){
-            combinedList.push(list1.splice(1, 0)[0]);
+        if (list1[0].compare(list2[0]) <= 0){
+            let lower = list1.splice(0,1)[0];
+            combinedList.push(lower);
         } else {
-            combinedList.push(list2.splice(1, 0)[0]);
+            let lower = list2.splice(0,1)[0];
+            combinedList.push(lower);
         }//if/else:
     }//while:
-    combinedList.concat(list1.splice(list1.length));
-    combinedList.concat(list2.splice(list2.length));
+
+    while (list1.length > 0){
+        let rest = list1.splice(0, 1)[0];
+        combinedList.push(rest);
+    }//while:
+
+    while (list2.length > 0){
+        let rest = list2.splice(0, 1)[0];
+        combinedList.push(rest);
+    }//while:
+
+    return combinedList;
 }//merge:
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

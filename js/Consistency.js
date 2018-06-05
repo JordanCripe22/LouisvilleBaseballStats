@@ -23,6 +23,8 @@ class Consistency{
         //load ordered list of matchups with only at bats
         let atBatList = parseAtBats(matchupList);
         atBatList = orderMatchupsDescending(atBatList);
+        console.log(atBatList[0]);
+
 
         //initialize first group
         let curGroup = atBatList.splice(0, groupSize);
@@ -37,7 +39,7 @@ class Consistency{
             //remove incrementSize matchups from curGroup
             curGroup.splice(0, incrementSize);
 
-            curGroup = curGroup.concat(toAddAtBats);
+            curGroup = curGroup.concat(atBatsToAdd);
             groupList.push(calcAverage(curGroup));
         }//while:
 
