@@ -1,5 +1,5 @@
 
-//Jordan New
+
 function mergeSort(list){
     if (list.length === 1){
         return list;
@@ -12,7 +12,7 @@ function mergeSort(list){
     }//if/else;
 }//mergeSort
 
-//Jordan New
+
 function merge(list1, list2){
     let combinedList = [];
     while (list1.length > 0 && list2.length > 0){
@@ -279,7 +279,7 @@ function parseMatchupsDiffScoreBetween(lowerBound, upperBound, matchupList){
 }//getMatchupsScoreBetween
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//Jordan New
+
 /**
     @param matchupList Type: Array of Matchup Objects
     Return Type: Array of Matchup Objects
@@ -290,7 +290,7 @@ function orderMatchupsDescending(matchupList){
 }
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//Jordan New
+
 /**
     @param matchupList Type: Array of Matchup Objects
     Return Type: Array of Matchup Objects
@@ -301,7 +301,7 @@ function orderMatchupsAscending(matchupList){
 }
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//Jordan New
+
 /**
     @param matchupList Type: Array of Matchup Objects
     Return Type: Array of Matchup Objects
@@ -318,7 +318,7 @@ function parseAtBats(matchupList){
 }//parseAtBats
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//Jordan New
+
 /**
     @param matchupList Type: Array of Matchup Objects
     Return Type: Array of Matchup Objects
