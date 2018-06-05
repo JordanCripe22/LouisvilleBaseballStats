@@ -1,0 +1,110 @@
+result {
+    1B = Single
+    2B = Double
+    3B = Triple
+    HR = Home Run
+
+    GO = Ground Out
+    FO = Fly Out
+    LO = Line Out
+
+    K = Strike Out
+    KWP = Strike Out, Reached on Wild Pitch
+    KWP = Strike Out, Reached on Passed Ball
+
+    BKO = Bunt Strike Out
+    BO = Bunt Out
+    BGO = Bunt Ground Out
+    BFO = Bunt Fly Out
+    BPO = Bunt Pop Out
+    BS = Bunt Single
+
+    SACB = Sacrifice Bunt
+    SACBFC = Sacrifice Bunt, Reached on Fielders Choice
+    SACBRTE = Sacrifice Bunt, Reached on Throwing Error
+    SACBRFE = Sacrifice Bunt, Reached on Fielding Error
+    SACBROE = Sacrifice Bunt, Reached on Error
+
+    SACF = Sacrifice Fly
+    BB = Walk
+    IBB = Intentional Walk
+    HBP = Hit By Pitch
+
+    GDP = Grounded into Double Play
+    FDP = Flied Out into Double Play
+    LDP = Lined into Double Play
+
+    RFE = Reached On Fielding Error
+    RTE = Reached On Throwing Error
+    ROE = Reached On Error
+    FC = Fielders Choice
+    CI = catchersInterference
+
+    *** NOT YET IMPLEMENTED ***
+    SB = Stolen Base
+    CS = Caught Stealing
+    WP = Wild Pitch
+    PB = Past Ball
+    PO = Picked Off
+    FPO = Failed Pick Off
+    BLK = Balk
+    RI = Runner's Interference
+    BI = Batter's Interference
+    ATE = Advanced On Throwing Error
+    TO = Thrown Out
+    AT = Advanced On Throw
+    AFE  = Advanced On Fielding Error
+    BR = Base Running
+}
+
+direction {
+    1 = Strike Out Looking
+    2 = Strike Out Swinging
+
+    1 or 1.1= Pitcher
+    2 or 2.1= Catcher
+    2.5 = Right Field Line
+    3 or 3.1 = First Base
+    3.5 = Through the Right Side
+    4 or 4.1 = Second Base
+    4.5 = Down Left Field Line
+    5 or 5.1 = Third Base
+    5.5 = Through the Left Side
+    6 or 6.1 = Shortstop
+    6.5 = Up the Middle
+    7 or 7.1 = Left Field
+    7.5  = Left Center Field
+    8 or 8.1 = Center Field
+    8.5 = Right Center Field
+    9 or 9.1 = Right Field
+}
+
+
+gameMonth...............{1, 2, ... , 12}
+gameDay.................{1, 2, ... , 31}
+gameYear................{16, 17, 18, ...}
+gameHour................{0, 1, ... , 23} (Military Hour)
+
+awayTeam................{String}
+homeTeam................{String}
+batterTeam..............{3 Character String}
+batterFirsName..........{String}
+batterLastName..........{String}
+batterId................{String}
+pitcherTeam.............{3 Character String}
+pitcherFirstName........{String}
+pitcherLastName.........{String}
+pitcherId...............{String}
+starterReliever.........{S = starter, R = reliever}
+inningOrder.............{0, 1, 2, ... }
+
+inning..................{1, 2, 3, ... }
+balls...................{0, 1, 2, 3, 5 = non at bat}
+strikes.................{0, 1, 2, 5 = non at bat}
+outs....................{0, 1, 2}
+menOnBase...............{0, 1, 2, 3, 12, 23, 123}
+advancedMenOnBase.......{0, 2, 3, 4, 23, 24, 34, 44, 234, 344, 444}
+runScored...............{1 = earned, 1.1= unearned}
+runsBattedIn............{0, 1, 2, 3, 4}
+awayScore...............{Positive Integer}
+homeScore...............{Positive Integer}

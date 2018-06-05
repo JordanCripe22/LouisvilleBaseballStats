@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<title id='playerNameHead'></title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+
+    <body>
+        <script src='js/Data/MatchupData.js'></script>
+        <script src='js/Data/BatterData.js'></script>
+        <script src='js/Data/PitcherData.js'></script>
+        <script src='js/Data/TeamData.js'></script>
+        <script src='js/Data/MenuFilters.js'></script>
+
+        <script src='js/Objects/Team.js'></script>
+        <script src='js/Objects/Batter.js'></script>
+        <script src='js/Objects/Pitcher.js'></script>
+        <script src='js/Objects/Game.js'></script>
+        <script src='js/Objects/Matchup.js'></script>
+        <script src='js/Objects/Runner.js'></script>
+
+        <script src='js/Consistency.js'></script>
+        <script src='js/Chart.bundle.min.js'></script>
+        <script src='js/Chart.min.js'></script>
+        <script src='js/SetupFunctions.js'></script>
+        <script src='js/MatchupQueries.js'></script>
+        <script src='js/Filter.js'></script>
+        <script src='js/BatterStats.js'></script>
+        <script src='js/PitcherStats.js'></script>
+        <script src='js/BattingTable.js'></script>
+        <script src='js/PitchingTable.js'></script>
+
+        <script>
+            //Global Variables: Functions loaded from SetupFunctions.js
+            var rootMatchupList = loadMatchupList(matchupJSON['Matchups']);
+            var rootBatterList = loadBatterList(rootMatchupList);
+            var rootPitcherList = loadPitcherList(rootMatchupList);
+            var rootTeamList = loadTeamList(rootBatterList, rootPitcherList);
+        </script>
+
+        <div id='playerContainer'>
+            <div id='playerNameTitle'>Player Name</div>
+            <div id='playerImageContainer'></div>
+
+            <div id='playerInfo'>
+                <div>
+                    <span>Position: </span>
+                    <span id='playerPosition'></span>
+                    <span>Year: </span>
+                    <span id='playerCurYear'></span>
+                </div>
+                <div>
+                    <span>Bats: </span>
+                    <span id='playerBatHand'></span>
+                    <span>Throws: </span>
+                    <span id='playerThrowHand'></span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+
+            function setPlayerNameTitle(batter){
+                let titleNameContainer = document.getElementById('playerNameTitle');
+                titleNameContainer.textContent = batter.firstName + ' ' + batter.lastName;
+            }
+
+            function setPlayerPicture(batter){
+                let pictureContainer = document.getElementById('playerImageContainer');
+
+                //let folderName = batter.firstName + batter.lastName;
+                let playerImg = document.createElement('img');
+                //playerImg.setAttribute('src', 'Images/Players/' + folderName + '/' + folderName + '1.jpg');
+                playerImg.setAttribute('src', 'Images/Players/DevinMann/DevinMann1.jpg')
+                playerImg.style.height = '100%';
+                playerImg.style.width = '100%';
+
+                pictureContainer.appendChild(playerImg);
+            }
+
+            function setPlayerInfo(batter){
+
+                for (let i = 0; i < batterData.length; i++){
+                    if (batterData[i].batterId === batter.batterId){
+                        batter.freshmanYear = batterData[i]['freshmanYear'];
+                        batter.position = batterData[i]['position'];
+                        batter.batHand = batterData[i]['batHand'];
+                        batter.throwHand = batterData[i]['throwHand'];
+                    }
+                }
+
+                let batHandContainer = document.getElementById('playerBatHand');
+                batHandContainer.textContent = batter.batHand;
+
+                let throwHandContainer = document.getElementById('playerThrowHand');
+                throwHandContainer.textContent = batter.throwHand;
+
+                let positionContainer = document.getElementById('playerPosition');
+                positionContainer.textContent = batter.position;
+
+                let yearContainer = document.getElementById('playerCurYear');
+                let yearsPlayed = 18 - parseInt(batter.freshmanYear);
+                let yearString = '';
+
+                if (yearsPlayed === 0){
+                    yearString = 'FR';
+                } else if (yearsPlayed === 1){
+                    yearString = 'SO';
+                } else if (yearsPlayed === 2){
+                    yearString = 'JR';
+                } else if (yearsPlayed === 3){
+                    yearString = 'SR';
+                } else if (yearsPlayed === 4){
+                    yearString = 'GR SR';
+                }
+
+                yearContainer.textContent = yearString;
+
+            }//setPlayerInfo
+
+            function setCurBatter(batterId){
+                curBatter = getBatterById(batterId);
+            }
+
+            function initialize(batterId){
+                setCurBatter(batterId);
+
+                setPlayerNameTitle(curBatter);
+                setPlayerPicture(curBatter);
+                setPlayerInfo(curBatter);
+                loadCurBatterStats();
+
+            }
+
+            function loadCurBatterStats(){
+                curBatterStats = new BatterStats(curBatter);
+            }
+
+            var curBatter = null;
+            var curBatterStats = null;
+
+            window.onload = initialize(sessionStorage.getItem('curBatterId'));
+
+
+            //curBatter.consistencyRating(curBatter.allMatchups);
+            curBatter.loadGameList();
+            console.log(curBatter.gameList);
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,195 @@
+#battingTable td {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#battingTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+
+#battingTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr.total {
+    background-color: #cccccc;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#battingTable th {
+    text-align: center;
+    font-size: 16px;
+    background-color: red;
+    color: white;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+#battingTitle{
+    font-size: 4vw;
+    text-align: center;
+    width: 100%;
+}
+
+#currentBattingFiltersTable th{
+    border-right: 3px;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+
+    border-style: solid;
+}
+
+#pitchingTable td {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#pitchingTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+
+#pitchingTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#pitchingTable tr:hover {
+    background-color: #ddd;
+}
+
+#pitchingTable th {
+    text-align: center;
+    font-size: 16px;
+    background-color: red;
+    color: white;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+#pitchingTitle{
+    font-size: 4vw;
+    text-align: center;
+    width: 100%;
+}
+
+#currentPitchingFiltersTable th{
+    border-right: 3px;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+
+    border-style: solid;
+}
+
+.batting-table{
+    margin-top: 25px;
+    margin-left: 170px;
+    overflow-x: scroll;
+    overflow-y: visible;
+    padding: 0;
+}
+
+.pitching-table{
+    margin-top: 25px;
+    margin-left: 170px;
+    overflow-x: scroll;
+    overflow-y: visible;
+    padding: 0;
+}
+
+.filter-container {
+    margin-right: 0;
+}
+
+.header-main-col-1 {
+    position: absolute;
+    width: 150px;
+    left: 25px;
+}
+
+.header-main-col-2 {
+    width: 20px;
+}
+
+.header-main-col-3 {
+    width: 30px;
+}
+
+.header-main-col-4 {
+    width: 40px;
+}
+
+.header-main-col-5 {
+    width: 50px;
+}
+
+.header-main-col-6 {
+    width: 60px;
+}
+
+.header-main-col-7 {
+    width: 70px;
+}
+
+.x {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 0;
+    border: 0;
+}
+
+.sort-arrow {
+    cursor: pointer;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 0;
+    border: 0;
+    height: 100%;
+}
+
+button.add {
+    display: block;
+    margin: 0 auto;
+}
+
+button.remove {
+    display: block;
+    margin: 0 auto;
+}
+
+#playerImageContainer {
+    width: 30%;
+    height: auto;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: black;
+}
+
+body {
+    font-size: 1.75vw;
+}
+.bottom-div {
+    height: 100px;
+    width: 100%;
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<title>Louisville Stats</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+
+    <body>
+        <script src='js/Data/MatchupData.js'></script>
+        <script src='js/Data/BatterData.js'></script>
+        <script src='js/Data/PitcherData.js'></script>
+        <script src='js/Data/TeamData.js'></script>
+        <script src='js/Data/MenuFilters.js'></script>
+
+        <script src='js/Objects/Team.js'></script>
+        <script src='js/Objects/Batter.js'></script>
+        <script src='js/Objects/Pitcher.js'></script>
+        <script src='js/Objects/Game.js'></script>
+        <script src='js/Objects/Matchup.js'></script>
+        <script src='js/Objects/Runner.js'></script>
+
+        <script src='js/Consistency.js'></script>
+        <script src='js/Chart.bundle.min.js'></script>
+        <script src='js/Chart.min.js'></script>
+        <script src='js/SetupFunctions.js'></script>
+        <script src='js/MatchupQueries.js'></script>
+        <script src='js/Filter.js'></script>
+        <script src='js/BatterStats.js'></script>
+        <script src='js/PitcherStats.js'></script>
+        <script src='js/BattingTable.js'></script>
+        <script src='js/PitchingTable.js'></script>
+
+        <div id="battingTitle">Louisville Statistics</div>
+
+        <div id="battingContainer">
+            <div id="addBattingFilterDiv">
+                <button onclick="addBattingFilter()">Add Filter</button>
+                <select id="battingFilter1" onchange="changeBattingFilterCategory()">
+                    <option value='gameYear'>Year</option>
+                    <option value='latest'>Latest Appearances</option>
+                    <option value='menOnBase'>Men On Base</option>
+                    <option value='outs'>Outs</option>
+                    <option value='count'>Count</option>
+                    <option value='inning'>Inning</option>
+                    <option value='dayOfWeek'>Day</option>
+                    <option value='month'>Month</option>
+                    <option value='opposingTeam'>Opposing Team</option>
+                    <option value='opposingPitcher'>Opposing Pitcher</option>
+                    <option value='gameScore'>Game Score</option>
+                </select>
+
+                <select id="battingFilter2" onchange="changeBattingFilterRestraint()">
+                    <option value='18'>2018</option>
+                    <option value='17'>2017</option>
+                    <option value='16'>2016</option>
+                </select>
+
+                <span id="battingFilter3" display="None"></span>
+            </div>
+
+            <div id="minimumAtBats">
+                <span>Minimum At Bats: </span>
+                <input value="0"></input>
+            </div>
+
+            <div id="currentBattingFilters">
+                <table id="currentBattingFiltersTable">
+                    <tbody id="currentBattingFiltersTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="loadBattingFilters">
+                <button id="updateBattingStatsButton" onclick="updateBattingStats()">Update</button>
+                <button id="removeAllBattingFiltersButton" onclick="removeAllBattingFilters()">Remove Filters</button>
+            </div>
+
+            <div class='batting-table'>
+                <table id="battingTable">
+                    <tbody id="battingTableBody">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class='bottom-div'></div>
+
+        <div id="pitching">
+            <div id="addPitchingFilterDiv">
+                <button onclick="addPitchingFilter()">Add Filter</button>
+                <select id="pitchingFilter1" onchange="changePitchingFilterCategory()">
+                    <option value='gameYear'>Year</option>
+                    <option value='latest'>Latest Appearances</option>
+                    <option value='menOnBase'>Men On Base</option>
+                    <option value='outs'>Outs</option>
+                    <option value='count'>Count</option>
+                    <option value='inning'>Inning</option>
+                    <option value='dayOfWeek'>Day</option>
+                    <option value='month'>Month</option>
+                    <option value='opposingTeam'>Opposing Team</option>
+                    <option value='opposingPitcher'>Opposing Pitcher</option>
+                    <option value='gameScore'>Game Score</option>
+                </select>
+
+                <select id="pitchingFilter2" onchange="changePitchingFilterRestraint()">
+                    <option value='18'>2018</option>
+                    <option value='17'>2017</option>
+                    <option value='16'>2016</option>
+                </select>
+
+                <span id="pitchingFilter3" display="None"></span>
+            </div>
+
+            <div id="minimumBattersFaced">
+                <span>Minimum Batters Faced: </span>
+                <input value="0"></input>
+            </div>
+
+            <div id="currentPitchingFilters">
+                <table id="currentPitchingFiltersTable">
+                    <tbody id="currentPitchingFiltersTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="loadPitchingFilters">
+                <button id="updatePitchingStatsButton" onclick="updatePitchingStats()">Update</button>
+                <button id="removeAllPitchingFiltersButton" onclick="removeAllPitchingFilters()">Remove Filters</button>
+            </div>
+
+            <div class='pitching-table'>
+                <table id="pitchingTable">
+                    <tbody id="pitchingTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class='bottom-div'></div>
+
+        <script>
+
+            function changeBattingFilterCategory(){
+                let lvl1 = document.getElementById('battingFilter1').value;
+                let options1 = battingFilterMenuMap['lvl1'];
+                let i = 0;
+                while(i < options1.length){
+                    if(options1[i]['value'] === lvl1){
+                        let options2 = options1[i]['lvl2'];
+                        curBattingTable.updateLevel2(options2);
+                        break;
+                    }
+                    i++;
+                }
+            }
+
+            function changePitchingFilterCategory(){
+                let lvl1 = document.getElementById('pitchingFilter1').value;
+                let options1 = pitchingFilterMenuMap['lvl1'];
+                let i = 0;
+                while(i < options1.length){
+                    if(options1[i]['value'] === lvl1){
+                        let options2 = options1[i]['lvl2'];
+                        curPitchingTable.updateLevel2(options2);
+                        break;
+                    }
+                    i++;
+                }
+            }
+
+            function changeBattingFilterRestraint(){
+                let lvl1 = document.getElementById('battingFilter1').value;
+                let lvl2 = document.getElementById('battingFilter2').value;
+                let options1 = battingFilterMenuMap['lvl1'];
+                let i = 0;
+                while(i < options1.length){
+                    if(options1[i]['value'] === lvl1){
+                        let options2 = options1[i]['lvl2'];
+                        let j = 0;
+                        while(j < options2.length){
+                            if(options2[j]['value'] === lvl2){
+                                curBattingTable.updateLevel3(options2[j].hasOwnProperty('inputBox'));
+                                break;
+                            }
+                            j++;
+                        }
+                        break;
+                    }
+                    i++;
+                }
+            }
+
+            function changePitchingFilterRestraint(){
+                let lvl1 = document.getElementById('pitchingFilter1').value;
+                let lvl2 = document.getElementById('pitchingFilter2').value;
+                let options1 = pitchingFilterMenuMap['lvl1'];
+                let i = 0;
+                while(i < options1.length){
+                    if(options1[i]['value'] === lvl1){
+                        let options2 = options1[i]['lvl2'];
+                        let j = 0;
+                        while(j < options2.length){
+                            if(options2[j]['value'] === lvl2){
+                                curPitchingTable.updateLevel3(options2[j].hasOwnProperty('inputBox'));
+                                break;
+                            }
+                            j++;
+                        }
+                        break;
+                    }
+                    i++;
+                }
+            }
+
+            //Global Variables: Functions loaded from SetupFunctions.js
+            var rootMatchupList = loadMatchupList(matchupJSON['Matchups']);
+            var rootBatterList = loadBatterList(rootMatchupList);
+            var rootPitcherList = loadPitcherList(rootMatchupList);
+
+            rootBatterList = addBaseRunningToBatters(rootMatchupList, rootBatterList);
+
+            var rootTeamList = loadTeamList(rootBatterList, rootPitcherList);
+
+
+
+            //Global Variable: ALL LOUISVILLE INFORMATION CAN BE FOUND HERE
+            var curTeam = getTeamById('LOU');
+
+            curTeam.addTotalBatter();
+            curTeam.addTotalPitcher();
+
+            //Global Variable: Home Page Tables
+            var curBattingTable = new BattingTable(curTeam.batterList);
+            var curPitchingTable = new PitchingTable(curTeam.pitcherList);
+
+            //onclick call through
+            function addBattingFilter(){
+                curBattingTable.addFilter();
+            }
+
+            //onclick call through
+            function addPitchingFilter(){
+                curPitchingTable.addFilter();
+            }
+
+            //onclick call through
+            function removeAllBattingFilters(){
+                curBattingTable.removeAllFilters();
+            }
+
+            //onclick call through
+            function removeAllPitchingFilters(){
+                curPitchingTable.removeAllFilters();
+            }
+
+            //onclick call through
+            function updateBattingStats(){
+                curBattingTable.update();
+            }//updateBattingStats
+
+            //onclick call through
+            function updatePitchingStats(){
+                curPitchingTable.update();
+            }//updatePitchingStats
+
+            //Initialize tables with no filters
+            updateBattingStats();
+            updatePitchingStats();
+
+        </script>
+
+    </body>
+</html>
