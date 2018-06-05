@@ -7,8 +7,10 @@ function loadMatchupList(jsonMatchupList){
     let matchupList = [];
 
     for (let i = 0; i < jsonMatchupList.length; i++){
-        let matchup = new Matchup(jsonMatchupList[i]);
-        matchupList.push(matchup);
+        if(jsonMatchupList[i]['result'] !== ''){
+            let matchup = new Matchup(jsonMatchupList[i]);
+            matchupList.push(matchup);
+        }
     }
 
     return matchupList;
