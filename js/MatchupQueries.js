@@ -4,7 +4,7 @@ function mergeSort(list){
     if (list.length === 1){
         return list;
     } else {
-        let list2 = list.splice(Math.floor(m1.length/2));
+        let list2 = list.splice(Math.floor(list.length/2));
         let list1 = list;
         list1 = mergeSort(list1);
         list2 = mergeSort(list2);
@@ -309,7 +309,7 @@ function orderMatchupsAscending(matchupList){
 */
 function parseAtBats(matchupList){
     let matched = [];
-    for(let i === 0; i < matchupList.length){
+    for(let i = 0; i < matchupList.length; i++){
         if(matchupList[i].isAtBat()){
             matched.push(matchupList[i]);
         }//if: matched
@@ -326,7 +326,7 @@ function parseAtBats(matchupList){
 */
 function parsePlateAppearances(matchupList){
     let matched = [];
-    for(let i === 0; i < matchupList.length){
+    for(let i = 0; i < matchupList.length; i++){
         if(matchupList[i].isPlateAppearance()){
             matched.push(matchupList[i]);
         }//if: matched
@@ -356,7 +356,7 @@ function parseLastAppearances(lastX, matchupList){
 */
 function countHits(matchupList){
     let count = 0;
-    for(let i === 0; i < matchupList.length){
+    for(let i = 0; i < matchupList.length; i++){
         if(matchupList[i].isHit()){
             count++;
         }//if:

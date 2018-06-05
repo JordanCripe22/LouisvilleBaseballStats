@@ -146,7 +146,9 @@
 
             //curBatter.consistencyRating(curBatter.allMatchups);
             curBatter.loadGameList();
-            console.log(curBatter.gameList);
+
+            let consistency = new Consistency(curBatter, true);
+            console.log(consistency.continuoslyGroupBattingAverage(curBatter.batterMatchups, 10, 1));
         </script>
     </body>
 

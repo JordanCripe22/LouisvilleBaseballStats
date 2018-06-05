@@ -9,13 +9,12 @@ class Consistency{
         @param matchupList
         @param groupSize
         @param incrementSize
-        Return Type: Array of Floats fixed to 3 decimal places
+        @return Type: Array of Floats fixed to 3 decimal places
         REQUIRES: incrementSize > 0
     */
     continuoslyGroupBattingAverage(matchupList, groupSize, incrementSize){
 
         let groupList = [];
-        let curGroup = [];
 
         let calcAverage = function(matchupList){
             return (countHits(matchupList) / matchupList.length).toFixed(3);

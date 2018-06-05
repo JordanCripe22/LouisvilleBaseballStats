@@ -137,7 +137,7 @@ class Matchup{
     isHit(){
         const resultList = ['1B', '2B', '3B', 'HR', 'BS']
 
-        return resultList.indexOf(matchup['result']) !== -1;
+        return resultList.indexOf(this.result) !== -1;
     }
 
     isPlateAppearance(){
