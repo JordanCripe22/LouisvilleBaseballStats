@@ -19,6 +19,8 @@
         <script src='js/Objects/Matchup.js'></script>
         <script src='js/Objects/Runner.js'></script>
 
+
+        <script src='js/SprayChart.js'></script>
         <script src='js/Consistency.js'></script>
         <script src='js/Chart.bundle.min.js'></script>
         <script src='js/Chart.min.js'></script>
@@ -56,6 +58,11 @@
                     <span id='playerThrowHand'></span>
                 </div>
             </div>
+        </div>
+
+        <div>
+            <canvas id='fieldCanvas' width='500px' height = '500px' style='border:1px solid #d3d3d3;'></canvas>
+
         </div>
 
 
@@ -148,7 +155,8 @@
             curBatter.loadGameList();
 
             let consistency = new Consistency(curBatter, true);
-            console.log(consistency.continuoslyGroupBattingAverage(curBatter.batterMatchups, 10, 1));
+            let sprayChart = new SprayChart(curBatter);
+
         </script>
     </body>
 

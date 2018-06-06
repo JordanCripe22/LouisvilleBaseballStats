@@ -35,7 +35,7 @@ class Matchup{
 
         //Situation (Post) Info
         this.result = jsonMatchup['result'];
-        this.direction = jsonMatchup['direction'];
+        this.direction = jsonMatchup['direction'].split('-')[0];
         this.advancedMenOnBase = jsonMatchup['advancedMenOnBase'];
         this.runsBattedIn = jsonMatchup['rbi'];
 
@@ -164,6 +164,14 @@ class Matchup{
         const resultList = ['KS', 'KL', 'BKO', 'KSWP', 'KSPB', 'KSROE'];
 
         return resultList.indexOf(this.result) !== -1;
+    }
+
+    hasDirection(){
+        if (parseInt(this.direction) > 0){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     /**
