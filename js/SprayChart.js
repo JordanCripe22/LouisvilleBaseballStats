@@ -58,7 +58,7 @@ class SprayChart {
         ctx.moveTo(Mx, h);
 
         ctx.lineTo(Lx, Ly);
-        ctx.quadraticCurveTo(Mx, -0.2 * h, Rx, Ry);
+        ctx.quadraticCurveTo(Mx, 0, Rx, Ry);
         ctx.lineTo(Mx, h);
 
         ctx.closePath();
