@@ -41,19 +41,32 @@ class SprayChart {
             return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
         }
 
+        const Mx = 0.5 * w;
+        const My = 0.5 * h;
+
+        const Lx = 0;
+        const Ly = 0.5875 * h;
+
+        const Rx = w;
+        const Ry = 0.5875 * h;
+
+
         var ctx = canvas.getContext("2d");
+
+        //draw left field line
         ctx.beginPath();
-        ctx.moveTo(0.5 * w, 0.95 * h);
-        ctx.lineTo(0.1 * w, 0.4 * h);
+        ctx.moveTo(Mx, h);
+        ctx.lineTo(Lx, Ly);
         ctx.stroke();
 
-        ctx.beginPath();
-        const arcRadius = calcDistance(0.1 * w, 0.95 * h, 0.9 * w, 0.95 * h) / 2;
-        ctx.arc(0.5 * w, 0.4 * h, arcRadius * 1.5, Math.PI, 2 * Math.PI);
+        //draw curve
+        ctx.moveTo(Lx, Ly);
+        ctx.quadraticCurveTo(Mx, 0, Rx, Ry);
         ctx.stroke();
 
-        ctx.moveTo(0.5 * w, 0.95 * h);
-        ctx.lineTo(0.9 * w, 0.4 * h);
+        //draw right field line
+        ctx.moveTo(Rx, Ry);
+        ctx.lineTo(Mx, h);
         ctx.stroke();
     }
 
