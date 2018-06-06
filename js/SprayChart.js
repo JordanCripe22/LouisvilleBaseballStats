@@ -32,41 +32,99 @@ class SprayChart {
         return directionList;
     }//groupByDirection
 
+
+
     drawField(){
         let canvas = document.getElementById("fieldCanvas");
-        let w = canvas.width;
-        let h = canvas.height;
+
+        const unit = canvas.width;
+        if(canvas.width !== canvas.height){
+            console.log('Not Unit ');
+        }
 
         let calcDistance = function(x1, y1, x2, y2){
             return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
         }
 
-        const Mx = 0.5 * w;
-        const My = 0.5 * h;
+        let invertY = function(firstQuadrant){
+            let fourthQuadrant = unit - firstQuadrant;
+            return fourthQuadrant;
+        }
+
+        let leftLine = function(x){
+            return invertY(-x + 0.5 * unit);
+        }
+
+        let rightLine = function(x){
+            return invertY(x - 0.5 * unit);
+        }
+
+
+        const Mx = 0.5 * unit;
+        const My = 0.5 * unit;
 
         const Lx = 0;
-        const Ly = 0.5875 * h;
+        const Ly = 0.5 * unit;
 
-        const Rx = w;
-        const Ry = 0.5875 * h;
+        const Rx = unit;
+        const Ry = 0.5 * unit;
 
+        const iLx = 0.2 * unit;
+        const iLy = leftLine(0.2 * unit);
+
+        const iRx = 0.8 * unit;
+        const iRy = rightLine(0.8 * unit);
+
+        const warningTrack = 0.05;
 
         var ctx = canvas.getContext("2d");
 
+        //warning track
         ctx.beginPath();
-        ctx.fillStyle = "green";
-        ctx.moveTo(Mx, h);
+        ctx.fillStyle = "brown";
+        ctx.moveTo(Mx, unit);
 
         ctx.lineTo(Lx, Ly);
-        ctx.quadraticCurveTo(Mx, 0, Rx, Ry);
-        ctx.lineTo(Mx, h);
+        ctx.quadraticCurveTo(Mx, -0.25 * unit, Rx, Ry);
+        ctx.lineTo(Mx, unit);
 
         ctx.closePath();
         ctx.stroke();
         ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle = "green";
+        ctx.moveTo(Mx, (1-warningTrack) * unit);
+
+        ctx.lineTo(Lx + warningTrack * unit, Ly);
+        ctx.quadraticCurveTo(Mx, (2 * warningTrack - 0.25) * unit, Rx - warningTrack * unit, Ry);
+        ctx.lineTo(Mx, (1-warningTrack) * unit);
+
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+
+
+
+        /*
+        //infield outline
+        ctx.beginPath();
+        ctx.fillStyle = "brown";
+
+        ctx.moveTo(Mx, unit);
+        ctx.lineTo(iLx , iLy);
+        ctx.quadraticCurveTo(Mx, 0.8 *  My, iRx, iRy);
+        ctx.lineTo(Mx, unit);
+
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+        */
+
+
+
+
     }
-
-
 
 
     showDirections(){
