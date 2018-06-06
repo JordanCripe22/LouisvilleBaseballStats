@@ -77,10 +77,12 @@
             function setPlayerPicture(batter){
                 let pictureContainer = document.getElementById('playerImageContainer');
 
-                //let folderName = batter.firstName + batter.lastName;
                 let playerImg = document.createElement('img');
-                //playerImg.setAttribute('src', 'Images/Players/' + folderName + '/' + folderName + '1.jpg');
-                playerImg.setAttribute('src', 'Images/Players/DevinMann/DevinMann1.jpg')
+
+                //Evan new
+                let folderName = batter.firstName + batter.lastName;
+                playerImg.setAttribute('src', 'Images/Players/' + folderName + '/' + folderName + '.jpg');
+
                 playerImg.style.height = '100%';
                 playerImg.style.width = '100%';
 
@@ -155,7 +157,12 @@
             curBatter.loadGameList();
 
             let consistency = new Consistency(curBatter, true);
+<<<<<<< HEAD
             let sprayChart = new SprayChart(curBatter);
+=======
+            console.log(consistency.continuoslyGroupBattingAverage(curBatter.batterMatchups, 10, 1));
+
+>>>>>>> 01ef0759cd604a73ba8308d33576166dc5de2be0
 
         </script>
     </body>
