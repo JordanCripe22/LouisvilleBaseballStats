@@ -53,21 +53,17 @@ class SprayChart {
 
         var ctx = canvas.getContext("2d");
 
-        //draw left field line
         ctx.beginPath();
+        ctx.fillStyle = "green";
         ctx.moveTo(Mx, h);
+
         ctx.lineTo(Lx, Ly);
-        ctx.stroke();
-
-        //draw curve
-        ctx.moveTo(Lx, Ly);
-        ctx.quadraticCurveTo(Mx, 0, Rx, Ry);
-        ctx.stroke();
-
-        //draw right field line
-        ctx.moveTo(Rx, Ry);
+        ctx.quadraticCurveTo(Mx, -0.2 * h, Rx, Ry);
         ctx.lineTo(Mx, h);
+
+        ctx.closePath();
         ctx.stroke();
+        ctx.fill();
     }
 
 
