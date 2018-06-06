@@ -1,0 +1,12 @@
+@media only screen and (max-width: 1080px)  {
+
+    .pitching-table{
+        overflow-x: scroll;
+        overflow-y: visible;
+    }
+
+    .batting-table{
+        overflow-x: scroll;
+        overflow-y: visible;
+    }
+}

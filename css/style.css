@@ -99,17 +99,13 @@ table {
 
 .batting-table{
     margin-top: 25px;
-    margin-left: 170px;
-    overflow-x: scroll;
-    overflow-y: visible;
+    margin-left: 160px;
     padding: 0;
 }
 
 .pitching-table{
     margin-top: 25px;
-    margin-left: 170px;
-    overflow-x: scroll;
-    overflow-y: visible;
+    margin-left: 160px;
     padding: 0;
 }
 
@@ -119,8 +115,9 @@ table {
 
 .header-main-col-1 {
     position: absolute;
-    width: 150px;
-    left: 25px;
+    margin-left: 2.5%;
+    width: 140px;
+    left: 20px;
 }
 
 .header-main-col-2 {
@@ -187,8 +184,11 @@ a:hover {
 }
 
 body {
-    font-size: 1.75vw;
+    margin: 2.5%;
+    font-size: 1.5vw;
 }
+
+
 .bottom-div {
     height: 100px;
     width: 100%;

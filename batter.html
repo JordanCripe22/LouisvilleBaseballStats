@@ -3,6 +3,9 @@
     <head>
     	<title id='playerNameHead'></title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/large.css">
+        <link rel="stylesheet" type="text/css" href="css/medium.css">
+        <link rel="stylesheet" type="text/css" href="css/small.css">
     </head>
 
     <body>
@@ -18,7 +21,6 @@
         <script src='js/Objects/Game.js'></script>
         <script src='js/Objects/Matchup.js'></script>
         <script src='js/Objects/Runner.js'></script>
-
 
         <script src='js/SprayChart.js'></script>
         <script src='js/Consistency.js'></script>
@@ -79,14 +81,14 @@
 
                 let playerImg = document.createElement('img');
 
-                //Evan new
                 let folderName = batter.firstName + batter.lastName;
                 playerImg.setAttribute('src', 'Images/Players/' + folderName + '/' + folderName + '.jpg');
 
-                playerImg.style.height = '100%';
-                playerImg.style.width = '100%';
+                playerImg.style.maxHeight = '100%';
+                playerImg.style.maxWidth = '100%';
 
                 pictureContainer.appendChild(playerImg);
+
             }
 
             function setPlayerInfo(batter){
@@ -140,7 +142,6 @@
                 setPlayerPicture(curBatter);
                 setPlayerInfo(curBatter);
                 loadCurBatterStats();
-
             }
 
             function loadCurBatterStats(){
