@@ -70,10 +70,12 @@
             function setPlayerPicture(batter){
                 let pictureContainer = document.getElementById('playerImageContainer');
 
-                //let folderName = batter.firstName + batter.lastName;
                 let playerImg = document.createElement('img');
-                //playerImg.setAttribute('src', 'Images/Players/' + folderName + '/' + folderName + '1.jpg');
-                playerImg.setAttribute('src', 'Images/Players/DevinMann/DevinMann1.jpg')
+
+                //Evan new
+                let folderName = batter.firstName + batter.lastName;
+                playerImg.setAttribute('src', 'Images/Players/' + folderName + '/' + folderName + '.jpg');
+
                 playerImg.style.height = '100%';
                 playerImg.style.width = '100%';
 
@@ -149,6 +151,8 @@
 
             let consistency = new Consistency(curBatter, true);
             console.log(consistency.continuoslyGroupBattingAverage(curBatter.batterMatchups, 10, 1));
+
+
         </script>
     </body>
 
