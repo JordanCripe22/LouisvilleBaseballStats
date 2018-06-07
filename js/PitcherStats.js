@@ -79,13 +79,25 @@ class PitcherStats{
         */
     }
 
-    countInningsPitched(matchupList){
+    countInningsPitched(){
         let outsRecorded = 0;
-        for(let i = 0; i < matchupList.length; i++){
-            outsRecorded += matchupList[i].countOuts();
+        for(let i = 0; i < this.matchupList.length; i++){
+            outsRecorded += this.matchupList[i].countOuts();
+        }
+        return (outsRecorded / 3);
+
+    }
+
+    //returns innings pitched + {.0, .1, .2}
+    displayInningsPitched(){
+        let outsRecorded = 0;
+        for(let i = 0; i < this.matchupList.length; i++){
+            outsRecorded += this.matchupList[i].countOuts();
         }
         return (Math.floor(outsRecorded / 3) + (outsRecorded % 3) * 0.1).toFixed(1);
     }
+
+
 
     countHits(){
         return this.singles + this.doubles + this.triples + this.homeRuns;
@@ -151,7 +163,7 @@ class PitcherStats{
             } else if (res === "CI") {
                 this.catchersInterference++;
             } else if (res === "BR") {
-                
+
             } else {
                 console.log('Missing Result' + res);
             }
@@ -190,6 +202,15 @@ class PitcherStats{
             */
         }
     }
+
+    getWHIP(){
+        if(this.countInningsPitched() === 0){
+            return this.countInningsPitched().toFixed(3).toString();
+        } //if: IP = 0
+        else{
+            return ((this.walks + this.countHits()) / this.countInningsPitched()).toFixed(3).toString();
+        } //else: IP > 0
+    }//getWHIP
 
     countStrikeOuts(){
         return this.strikeOutsLooking + this.strikeOutsSwinging;

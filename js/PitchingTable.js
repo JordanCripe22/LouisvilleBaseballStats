@@ -139,6 +139,7 @@ class PitchingTable{
         row.classList.add('table-header-row');
 
         row.appendChild(this.createTableHeaderCell('Pitcher', 'header-main-col-1', ''));
+        row.appendChild(this.createTableHeaderCell('IP', 'ip-col', 'header-main-col-5'));
         row.appendChild(this.createTableHeaderCell('H', 'h-col', 'header-main-col-4'));
         row.appendChild(this.createTableHeaderCell('AB', 'ab-col', 'header-main-col-5'));
         row.appendChild(this.createTableHeaderCell('AVG', 'avg-col', 'header-main-col-6'));
@@ -148,7 +149,9 @@ class PitchingTable{
         row.appendChild(this.createTableHeaderCell('SLG', 'slg-col', 'header-main-col-6'));
         row.appendChild(this.createTableHeaderCell('BB', 'bb-col', 'header-main-col-4'));
         row.appendChild(this.createTableHeaderCell('HBP', 'hbp-col', 'header-main-col-5'));
-        row.appendChild(this.createTableHeaderCell('OBP', 'obp-col', 'header-main-col-6'));
+        //row.appendChild(this.createTableHeaderCell('OBP', 'obp-col', 'header-main-col-6'));
+        //Evan new
+        row.appendChild(this.createTableHeaderCell('WHIP', 'whip-col', 'header-main-col-6'));
         row.appendChild(this.createTableHeaderCell('GO', 'go-col', 'header-main-col-4'));
         row.appendChild(this.createTableHeaderCell('FO', 'fo-col', 'header-main-col-4'));
         row.appendChild(this.createTableHeaderCell('LO', 'lo-col', 'header-main-col-4'));
@@ -526,6 +529,7 @@ class PitchingTable{
             }
 
             pitcherRow.appendChild(pitcherCell);
+            pitcherRow.appendChild(this.createTableCell('ip', pitcherStats.displayInningsPitched()));
             pitcherRow.appendChild(this.createTableCell('h', pitcherStats.countHits()));
             pitcherRow.appendChild(this.createTableCell('ab', pitcherStats.countAtBats()));
             pitcherRow.appendChild(this.createTableCell('avg', pitcherStats.getAverage()));
@@ -535,7 +539,9 @@ class PitchingTable{
             pitcherRow.appendChild(this.createTableCell('slg', pitcherStats.getSlugging()));
             pitcherRow.appendChild(this.createTableCell('bb', pitcherStats.walks));
             pitcherRow.appendChild(this.createTableCell('hbp', pitcherStats.hitByPitch));
-            pitcherRow.appendChild(this.createTableCell('obp', pitcherStats.getOnBase()));
+            //pitcherRow.appendChild(this.createTableCell('obp', pitcherStats.getOnBase()));
+            //Evan new
+            pitcherRow.appendChild(this.createTableCell('whip', pitcherStats.getWHIP()));
             pitcherRow.appendChild(this.createTableCell('go', pitcherStats.groundOuts));
             pitcherRow.appendChild(this.createTableCell('fo', pitcherStats.flyOuts));
             pitcherRow.appendChild(this.createTableCell('lo', pitcherStats.lineOuts));
