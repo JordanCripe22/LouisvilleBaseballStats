@@ -12,14 +12,6 @@ class BatterGame{
         this.matchupList.push(matchup);
     }//constructor
 
-    orderMatchupsByDateAscending(){
-        this.matchupList = orderByDateAscending(this.matchupList);
-    }
-
-    orderMatchupsByDateDescending(){
-        this.matchupList = orderByDateDescending(this.matchupList);
-    }
-
     isBatterGame(matchup){
         let dateValue = parseInt(matchup['gameYear']) * 1000000;
         dateValue += parseInt(matchup['gameMonth']) * 10000;
@@ -94,14 +86,6 @@ class PitcherGame{
         } else {
             return false;
         }
-    }
-
-    orderMatchupsByDateAscending(){
-        this.matchupList = orderByDateAscending(this.matchupList);
-    }
-
-    orderMatchupsByDateDescending(){
-        this.matchupList = orderByDateDescending(this.matchupList);
     }
 
     addMatchup(matchup){

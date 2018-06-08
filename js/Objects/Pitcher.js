@@ -23,18 +23,6 @@ class Pitcher {
         this.pitcherStats.calcBasicStats(matchupList);
     }
 
-    orderGameMatchupsByDateAscending(){
-        for (let i = 0; i < this.gameList.length; i++){
-            this.gameList[i].orderMatchupsByDateAscending();
-        }
-    }
-
-    orderGameMatchupsByDateDescending(){
-        for (let i = 0; i < this.gameList.length; i++){
-            this.gameList[i].orderMatchupsByDateDescending();
-        }
-    }
-
     loadGameList(){
         for (let i = 0; i < this.pitcherMatchups.length; i++){
             let curMatchup = this.pitcherMatchups[i];

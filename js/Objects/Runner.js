@@ -11,11 +11,22 @@ class Runner {
         this.runsScored = jsonMatchup['runsScored'][runnerIndex];
         this.runnerResults = jsonMatchup['baseRunnersResult'][runnerIndex].split(' ');
         this.inningOrder = jsonMatchup['inningOrder'][runnerIndex + 1];
+        this.responsiblePitcherId = jsonMatchup['pitcherTeam']
+            + jsonMatchup['pitcherResponsibleFirstName'][runnerIndex]
+            + jsonMatchup['pitcherResponsibleLastName'][runnerIndex];
+        if (this.responsiblePitcherId === jsonMatchup['pitcherTeam']){
+            this.responsiblePitcherId = '';
+        } else {
+            console.log(this.responsiblePitcherId);
+        }
 
-        this.responsiblePitcherId = null;
         this.currentPitcherId = jsonMatchup['pitcherTeam'] + jsonMatchup['pitcherFirstName'] + jsonMatchup['pitcherLastName'];
-
+        
     }//constructor
+
+    setResponsiblePitcherId(pitcherId){
+        this.responsiblePitcherId = pitcherId;
+    }
 
     isOut(){
         const baseRunningOutList = [

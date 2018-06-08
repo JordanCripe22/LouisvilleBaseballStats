@@ -3,9 +3,68 @@ class SprayChart {
         this.batter = batter;
         this.matchupList = batter.batterMatchups;
         this.directionList = this.groupByDirection();
+
+
+        this.left = [];
+        this.middle = [];
+        this.right = [];
+
+        this.initialize();
+    }
+
+    initialize(){
         this.showDirections();
         this.drawField();
-    }
+        this.groupLeftRightMiddle();
+        console.log('left');
+        this.showPercentages(this.left);
+        console.log('middle');
+        this.showPercentages(this.middle);
+        console.log('right');
+        this.showPercentages(this.right);
+    }//initialize
+
+    showPercentages(matchupList){
+        let hit = 0;
+        let go = 0;
+        let fo = 0;
+        let lo = 0;
+        for(let i = 0; i < matchupList.length; i++){
+            if (matchupList[i].isGroundOut()){
+                go++;
+            } else if (matchupList[i].isFlyout()){
+                fo++;
+            } else if (matchupList[i].isLineOut()){
+                lo++;
+            } else if (matchupList[i].isHit()){
+                hit++;
+            }//if/els:
+        }//for: i
+
+        let total = go + fo + lo + hit;
+
+        console.log('GO: ' + (go/total).toFixed(3));
+        console.log('FO: ' + (fo/total).toFixed(3));
+        console.log('LO: ' + (lo/total).toFixed(3));
+        console.log('Hit: ' + (hit/total).toFixed(3));
+    }//showPercentages
+
+    groupLeftRightMiddle(){
+        const leftDirectionList = ['4.5', '5', '5.5', '6', '7', '7.5'];
+        const rightDirectionList = ['2.5', '3', '3.5', '4', '9', '8.5'];
+
+        for(let i = 0; i < this.matchupList.length; i++){
+            if (this.matchupList[i].hasDirection){
+                if(leftDirectionList.indexOf(this.matchupList[i].direction) !== -1){
+                    this.left.push(this.matchupList[i]);
+                } else if(rightDirectionList.indexOf(this.matchupList[i].direction) !== -1) {
+                    this.right.push(this.matchupList[i]);
+                } else {
+                    this.middle.push(this.matchupList[i]);
+                }//if/else: LRC
+            }//if: has direction
+        }//for: i
+    }//groupLeftRightMiddle
 
     groupByDirection(){
         let directionList = [];
@@ -31,6 +90,7 @@ class SprayChart {
         }//for: i
         return directionList;
     }//groupByDirection
+
 
 
 

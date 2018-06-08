@@ -6,8 +6,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"L",
         "throwHand":"L",
-        "freshmanYear":"2016"
-        "position":"P"
+        "freshmanYear":"2016",
+        "position":"LHP"
     },
     {
         "pitcherId": "LOUNickBennett",
@@ -16,8 +16,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"L",
         "throwHand":"L",
-        "freshmanYear":"2017"
-        "position":"P"
+        "freshmanYear":"2017",
+        "position":"LHP"
     },
     {
         "pitcherId": "LOUBobbyMiller",
@@ -26,8 +26,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"R",
         "throwHand":"R",
-        "freshmanYear":"2018"
-        "position":"P"
+        "freshmanYear":"2018",
+        "position":"RHP"
     },
     {
         "pitcherId": "LOUReidDetmers",
@@ -36,8 +36,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"L",
         "throwHand":"L",
-        "freshmanYear":"2018"
-        "position":"P"
+        "freshmanYear":"2018",
+        "position":"LHP"
     },
     {
         "pitcherId": "LOUMichaelKirian",
@@ -46,18 +46,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"L",
         "throwHand":"L",
-        "freshmanYear":"2018"
-        "position":"P"
-    },
-    {
-        "pitcherId": "LOU",
-        "firstName": "",
-        "lastName": "",
-        "teamId":"LOU",
-        "batHand":"",
-        "throwHand":"",
-        "freshmanYear":"201"
-        "position":"P"
+        "freshmanYear":"2018",
+        "position":"LHP"
     },
     {
         "pitcherId": "LOURileyThompson",
@@ -66,8 +56,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"R",
         "throwHand":"R",
-        "freshmanYear":"2016"
-        "position":"P"
+        "freshmanYear":"2016",
+        "position":"RHP"
     },
     {
         "pitcherId": "LOUBryanHoeing",
@@ -76,8 +66,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"R",
         "throwHand":"R",
-        "freshmanYear":"2016"
-        "position":"P"
+        "freshmanYear":"2016",
+        "position":"RHP"
     },
     {
         "pitcherId": "LOULiamJenkins",
@@ -86,8 +76,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"R",
         "throwHand":"R",
-        "freshmanYear":"2016"
-        "position":"P"
+        "freshmanYear":"2016",
+        "position":"RHP"
     },
     {
         "pitcherId": "LOUJDMundt",
@@ -96,8 +86,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"L",
         "throwHand":"L",
-        "freshmanYear":"2017"
-        "position":"P"
+        "freshmanYear":"2017",
+        "position":"LHP"
     },
     {
         "pitcherId": "LOUMacWelsh",
@@ -106,8 +96,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"",
         "throwHand":"",
-        "freshmanYear":"2015"
-        "position":"P"
+        "freshmanYear":"2015",
+        "position":"RHP"
     },
     {
         "pitcherId": "LOURabonMartin",
@@ -116,8 +106,8 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"L",
         "throwHand":"L",
-        "freshmanYear":"2016"
-        "position":"P"
+        "freshmanYear":"2016",
+        "position":"LHP"
     },
     {
         "pitcherId": "LOUShaySmiddy",
@@ -126,9 +116,9 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"R",
         "throwHand":"R",
-        "freshmanYear":"2017"
-        "position":"P"
-    }
+        "freshmanYear":"2017",
+        "position":"RHP"
+    },
     {
         "pitcherId": "LOUAdamElliott",
         "firstName": "Adam",
@@ -136,9 +126,9 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"L",
         "throwHand":"L",
-        "freshmanYear":"2017"
-        "position":"P/OF"
-    }
+        "freshmanYear":"2017",
+        "position":"LHP/OF"
+    },
     {
         "pitcherId": "LOUAustinConway",
         "firstName": "Austin",
@@ -146,9 +136,9 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"R",
         "throwHand":"R",
-        "freshmanYear":"2014"
-        "position":"P"
-    }
+        "freshmanYear":"2014",
+        "position":"RHP"
+    },
     {
         "pitcherId": "LOUSamBordner",
         "firstName": "Sam",
@@ -156,9 +146,9 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"R",
         "throwHand":"R",
-        "freshmanYear":"2016"
-        "position":"P"
-    }
+        "freshmanYear":"2016",
+        "position":"RHP"
+    },
     {
         "pitcherId": "LOUGavinSullivan",
         "firstName": "Gavin",
@@ -166,9 +156,9 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"L",
         "throwHand":"L",
-        "freshmanYear":"2018"
-        "position":"P"
-    }
+        "freshmanYear":"2018",
+        "position":"LHP"
+    },
     {
         "pitcherId": "LOUAustinDickey",
         "firstName": "Austin",
@@ -176,9 +166,9 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"R",
         "throwHand":"R",
-        "freshmanYear":"2017"
-        "position":"P"
-    }
+        "freshmanYear":"2017",
+        "position":"RHP"
+    },
     {
         "pitcherId": "LOUStewartCurrie",
         "firstName": "Stewart",
@@ -186,7 +176,7 @@ var pitcherData = [
         "teamId":"LOU",
         "batHand":"R",
         "throwHand":"R",
-        "freshmanYear":"2017"
-        "position":"P"
+        "freshmanYear":"2017",
+        "position":"RHP"
     }
 ];

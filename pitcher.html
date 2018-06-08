@@ -40,6 +40,8 @@
             var rootBatterList = loadBatterList(rootMatchupList);
             var rootPitcherList = loadPitcherList(rootMatchupList);
             var rootTeamList = loadTeamList(rootBatterList, rootPitcherList);
+
+            console.log(pitcherData);
         </script>
 
         <div id='playerContainer'>
@@ -66,18 +68,17 @@
 
         <script>
 
-            function setPlayerNameTitle(batter){
+            function setPlayerNameTitle(pitcher){
                 let titleNameContainer = document.getElementById('playerNameTitle');
-                titleNameContainer.textContent = batter.batterFirstName + ' ' + batter.batterLastName;
+                titleNameContainer.textContent = pitcher.firstName + ' ' + pitcher.lastName;
             }
 
-            function setPlayerPicture(batter){
+            function setPlayerPicture(pitcher){
                 let pictureContainer = document.getElementById('playerImageContainer');
 
-                //let folderName = batter.firstName + batter.lastName;
+                let folderName = pitcher.firstName + pitcher.lastName;
                 let playerImg = document.createElement('img');
-                //playerImg.setAttribute('src', 'Images/Players/' + folderName + '/' + folderName + '1.jpg');
-                playerImg.setAttribute('src', 'Images/Players/DevinMann/DevinMann1.jpg')
+                playerImg.setAttribute('src', 'Images/Players/' + folderName + '/' + folderName + '1.jpg');
                 playerImg.style.height = '100%';
                 playerImg.style.width = '100%';
 
@@ -85,7 +86,6 @@
             }
 
             function setPlayerInfo(pitcher){
-
                 for (let i = 0; i < pitcherData.length; i++){
                     if (pitcherData[i].pitcherId === pitcher.pitcherId){
                         pitcher.freshmanYear = pitcherData[i]['freshmanYear'];
@@ -172,10 +172,10 @@
             var curPitcher = null;
             var curPitcherStats = null;
 
+
             window.onload = initialize(sessionStorage.getItem('curPitcherId'));
 
             curPitcher.loadGameList();
-            curPitcher.orderGameMatchupsByDateDescending();
 
             let relieverStatsMiddleInning = new PitcherStats(curPitcher);
             relieverStatsMiddleInning.calcBasicStats(inMiddleInningFirstBatter());

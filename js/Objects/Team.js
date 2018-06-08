@@ -8,6 +8,30 @@ class Team {
         this.pitcherList = [];
     }
 
+    getAllBatterMatchups(){
+        let teamBatterMatchups = [];
+        for(let i = 0; i < this.batterList.length; i++){
+            for(let j = 0; j < this.batterList[i].batterMatchups.length; j++){
+                let tempMatchup = this.batterList[i].batterMatchups[j];
+                teamBatterMatchups.push(tempMatchup);
+            }//for: j
+        }//for: i
+        teamBatterMatchups = mergeSort(teamBatterMatchups);
+        return teamBatterMatchups;
+    }//getAllBatterMatchups
+
+    getAllPitcherMatchups(){
+        let teamPitcherMatchups = [];
+        for(let i = 0; i < this.pitcherList.length; i++){
+            for(let j = 0; j < this.pitcherList[i].pitcherMatchups.length; j++){
+                let tempMatchup = this.pitcherList[i].pitcherMatchups[j];
+                teamPitcherMatchups.push(tempMatchup);
+            }//for: j
+        }//for: i
+        teamPitcherMatchups = mergeSort(teamPitcherMatchups);
+        return teamPitcherMatchups;
+    }//getAllPitcherMatchups
+
     addBatter(b){
         this.batterList.push(b);
     }

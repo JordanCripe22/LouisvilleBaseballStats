@@ -160,8 +160,51 @@ class Matchup{
         return resultList.indexOf(this.result) !== -1;
     }
 
+    isGroundOut(){
+        const resultList = ['GO', 'GDP', 'FC'];
+
+        if(resultList.indexOf(this.result) !== -1){
+            return true;
+        } else if (this.result === 'ROE' && this.direction.length < 2 && parseInt(this.direction) < 7){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    isFlyout(){
+        const resultList = ['FO', 'FDP'];
+        if(resultList.indexOf(this.result) !== -1){
+            return true;
+        } else if (this.result === 'ROE' && this.direction.length < 2 && parseInt(this.direction) > 6){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    isLineOut(){
+        const resultList = ['LO', 'LDP'];
+
+        if(resultList.indexOf(this.result) !== -1){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     isStrikeOut(){
         const resultList = ['KS', 'KL', 'BKO', 'KSWP', 'KSPB', 'KSROE'];
+
+        return resultList.indexOf(this.result) !== -1;
+    }
+
+    isReachedBase(){
+        const resultList = [
+            'BB', '1B', '2B', '3B', 'FC', 'HBP', 'ROE', 'BS', 'KSWP', 'KSPB',
+            'KSROE', 'IBB', 'RFE', 'RTE', 'SACBFC', 'SACBRTE', 'SACBRFE', 'SACBROE',
+            'CI'
+        ];
 
         return resultList.indexOf(this.result) !== -1;
     }
