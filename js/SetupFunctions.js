@@ -40,7 +40,7 @@ function loadBatterList(matchupList){
         }//while: j
 
         if (j === batterList.length){
-            let newBatter = new Batter(curMatchup);
+            let newBatter = new Batter(curMatchup.batterId, curMatchup);
             batterList.push(newBatter);
         }//if:
 
@@ -71,7 +71,7 @@ function loadPitcherList(matchupList){
         }//while: j
 
         if (j === pitcherList.length){
-            let newPitcher = new Pitcher(curMatchup);
+            let newPitcher = new Pitcher(curMatchup.pitcherId, curMatchup);
             pitcherList.push(newPitcher);
         }//if: not found
 

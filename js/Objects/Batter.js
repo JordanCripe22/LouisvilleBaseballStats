@@ -1,6 +1,6 @@
 class Batter {
 
-    constructor(matchup){
+    constructor(batterId, matchup){
         this.batterMatchups = [];
         this.baseRunnerList = [];
 
@@ -315,7 +315,7 @@ class Batter {
         return this.teamId === team.teamId;
     }
 
-    
+
 
 
 

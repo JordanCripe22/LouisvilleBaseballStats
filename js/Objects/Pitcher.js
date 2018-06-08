@@ -1,9 +1,8 @@
 class Pitcher {
 
-    constructor(matchup){
+    constructor(pitcherId, matchup){
         this.pitcherMatchups = [];
-
-
+        
         this.gameList = [];
         this.pitcherStats = new PitcherStats(this);
 
