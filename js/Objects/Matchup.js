@@ -140,6 +140,48 @@ class Matchup{
         return resultList.indexOf(this.result) !== -1;
     }
 
+    isLeftyBatter(){
+        let batter = getPlayerById(this.batterId);
+        let pitcher = getPlayerById(this.pitcherId)
+        if (batter.batHand === 'L') {
+            return true;
+        } else if(batter.batHand === 'S' && pitcher.throwHand === 'R') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    isLeftyPitcher(){
+        let pitcher = getPlayerById(this.pitcherId);
+        if (pitcher.throwHand === 'L') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    isRightyBatter(){
+        let batter = getPlayerById(this.batterId);
+        let pitcher = getPlayerById(this.pitcherId)
+        if (batter.batHand === 'R') {
+            return true;
+        } else if(batter.batHand === 'S' && pitcher.throwHand === 'L') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    isRightyPitcher(){
+        let pitcher = getPlayerById(this.pitcherId);
+        if (pitcher.throwHand === 'R') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     isPlateAppearance(){
         const resultList = [
             'BB', 'KS', 'KL', '1B', '2B', '3B', 'HR', 'GO', 'FO', 'FC', 'HBP', 'ROE', 'BS',
