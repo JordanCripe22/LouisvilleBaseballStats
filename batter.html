@@ -9,12 +9,14 @@
     </head>
 
     <body>
+        <script src='js/Data/RosterData.js'></script>
         <script src='js/Data/MatchupData.js'></script>
         <script src='js/Data/BatterData.js'></script>
         <script src='js/Data/PitcherData.js'></script>
         <script src='js/Data/TeamData.js'></script>
         <script src='js/Data/MenuFilters.js'></script>
 
+        <script src='js/Objects/Roster.js'></script>
         <script src='js/Objects/Player.js'></script>
         <script src='js/Objects/Team.js'></script>
         <script src='js/Objects/Batter.js'></script>
@@ -38,6 +40,7 @@
 
         <script>
             //Global Variables: Functions loaded from SetupFunctions.js
+            var rootRosterList = loadRosterList(rosterData);
             var rootMatchupList = loadMatchupList(matchupJSON['Matchups']);
             var rootBatterList = loadBatterList(rootMatchupList);
             var rootPitcherList = loadPitcherList(rootMatchupList);

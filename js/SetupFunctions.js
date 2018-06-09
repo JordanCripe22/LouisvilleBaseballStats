@@ -1,5 +1,41 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
+    @param jsonRosterList Type: JSON Array
+    Return Type: Array of Matchup objects
+*/
+function loadRosterList(jsonRosterList){
+    let rosterList = [];
+    let teamKeyList = [];
+    for(let teamKey in jsonRosterList){
+        teamKeyList.push(teamKey);
+    } //for: teamKey
+
+    for(let i = 0; i < teamKeyList.length; i++){
+        let curTeam = teamKeyList[i];
+        let tempRoster = new Roster(teamKeyList[i]);
+        for(let j = 0; j < jsonRosterList[curTeam].length; j++){
+            let playerJSON = jsonRosterList[curTeam][j]
+            let tempPlayer =  new Player(playerJSON['playerId']);
+            tempPlayer.initialize(
+                playerJSON['firstName'],
+                playerJSON['lastName'],
+                playerJSON['team'],
+                playerJSON['batHand'],
+                playerJSON['throwHand'],
+                playerJSON['freshmanYear'],
+                playerJSON['positon']
+            );
+
+            tempRoster.addPlayer(tempPlayer);
+        }//for: j
+        rosterList.push(tempRoster);
+    }//for: i
+    return rosterList;
+}//loadRosterList
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/**
     @param jsonMatchupList Type: JSON Array
     Return Type: Array of Matchup objects
 */
@@ -40,7 +76,8 @@ function loadBatterList(matchupList){
         }//while: j
 
         if (j === batterList.length){
-            let newBatter = new Batter(curMatchup);
+            let player = getPlayerById(curMatchup.batterId, curMatchup.batterTeam);
+            let newBatter = new Batter(player);
             batterList.push(newBatter);
         }//if:
 
@@ -71,7 +108,8 @@ function loadPitcherList(matchupList){
         }//while: j
 
         if (j === pitcherList.length){
-            let newPitcher = new Pitcher(curMatchup);
+            let player = getPlayerById(curMatchup.pitcherId, curMatchup.pitcherTeam);
+            let newPitcher = new Pitcher(player);
             pitcherList.push(newPitcher);
         }//if: not found
 
@@ -199,3 +237,28 @@ function getPitcherById(pitcherId){
         }//if:
     }//for:
 }//getPitcherById
+
+function getPlayerById(playerId, teamId){
+    let i = 0;
+    let curRoster = null;
+
+    while(i < rootRosterList.length){
+        if (rootRosterList[i].teamId === teamId){
+
+            curRoster = rootRosterList[i];
+            i = rootRosterList.length;
+            let j = 0;
+
+            while(j < curRoster.playerList.length){
+
+                let curPlayer = curRoster.playerList[j];
+                if(curPlayer.playerId === playerId){
+                    return curPlayer;
+                }//if: found player
+                j++;
+            }//while: playerList
+            curRoster = rootRosterList[i];
+        }//if: found team
+        i++;
+    }//while: roster list
+}//getPlayerById

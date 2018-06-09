@@ -1,32 +1,30 @@
 class Player{
 
-    constructor(playerId, matchup){
-
-        this.matchupList = [];
-        this.gameList = [];
+    constructor(playerId){
 
         this.playerId = playerId;
-
-        if(playerId === matchup.batterId){
-            this.firstName = matchup.batterFirstName;
-            this.lastName = matchup.batterLastName;
-            this.teamId = matchup.batterTeam;
-        } else if (playerId === matchup.pitcherId){
-            this.firstName = matchup.pitcherFirstName;
-            this.lastName = matchup.pitcherLastName;
-            this.teamId = matchup.pitcherTeam;
-        } else {
-            console.log('unrecognized playerId')
-        }//if/else:
-
+        this.firstName = null;
+        this.lastName = null;
+        this.teamId = null;
         this.batHand = null;
         this.throwHand = null;
         this.freshmanYear = null;
         this.position = null;
 
-        this.addMatchup(matchup);
+        this.matchupList = null;
+        this.gameList = null;
 
     }//constructor
+
+    initialize(firstName, lastName, teamId, batHand, throwHand, freshmanYear, position){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.teamId = teamId;
+        this.batHand = batHand;
+        this.throwHand = throwHand;
+        this.freshmanYear = freshmanYear;
+        this.position = position;
+    }
 
     addMatchup(matchup){
         this.matchupList.push(matchup);

@@ -14,13 +14,13 @@ class Matchup{
         this.batterTeam = jsonMatchup['batterTeam'];
         this.batterFirstName = jsonMatchup['batterFirstName'];
         this.batterLastName = jsonMatchup['batterLastName'];
-        this.batterId = this.batterTeam + this.batterFirstName + this.batterLastName;
+        this.batterId = jsonMatchup['batterId'];
 
         //Pitcher Info
         this.pitcherTeam = jsonMatchup['pitcherTeam'];
         this.pitcherFirstName = jsonMatchup['pitcherFirstName'];
         this.pitcherLastName = jsonMatchup['pitcherLastName'];
-        this.pitcherId = this.pitcherTeam + this.pitcherFirstName + this.pitcherLastName;
+        this.pitcherId = jsonMatchup['pitcherId'];
 
         //Situation (Pre) Info
         this.inning = jsonMatchup['inning'];

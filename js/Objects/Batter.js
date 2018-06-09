@@ -1,12 +1,22 @@
 class Batter extends Player{
 
-    constructor(matchup){
+    constructor(player){
 
-        super(matchup.batterId, matchup);
+        super(player.playerId);
+
+        this.firstName = player.firstName;
+        this.lastName = player.lastName;
+        this.teamId = player.teamId;
+        this.batHand = player.batHand;
+        this.throwHand = player.throwHand;
+        this.freshmanYear = player.freshmanYear;
+        this.position = player.position;
+
+        this.matchupList = [];
+        this.gameList = [];
 
         this.baseRunnerList = [];
 
-        this.gameList = [];
         this.batterStats = new BatterStats(this);
 
     }//constructor
