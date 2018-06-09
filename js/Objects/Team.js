@@ -11,8 +11,8 @@ class Team {
     getAllBatterMatchups(){
         let teamBatterMatchups = [];
         for(let i = 0; i < this.batterList.length; i++){
-            for(let j = 0; j < this.batterList[i].batterMatchups.length; j++){
-                let tempMatchup = this.batterList[i].batterMatchups[j];
+            for(let j = 0; j < this.batterList[i].playerMatchups.length; j++){
+                let tempMatchup = this.batterList[i].playerMatchups[j];
                 teamBatterMatchups.push(tempMatchup);
             }//for: j
         }//for: i
@@ -23,8 +23,8 @@ class Team {
     getAllPitcherMatchups(){
         let teamPitcherMatchups = [];
         for(let i = 0; i < this.pitcherList.length; i++){
-            for(let j = 0; j < this.pitcherList[i].pitcherMatchups.length; j++){
-                let tempMatchup = this.pitcherList[i].pitcherMatchups[j];
+            for(let j = 0; j < this.pitcherList[i].matchupList.length; j++){
+                let tempMatchup = this.pitcherList[i].matchupList[j];
                 teamPitcherMatchups.push(tempMatchup);
             }//for: j
         }//for: i
@@ -45,15 +45,15 @@ class Team {
 
         for(let i = 0; i < this.batterList.length; i++) {
             let curBatter = this.batterList[i];
-            for(let j = 0; j < curBatter.batterMatchups.length; j++){
-                let curMatchup = curBatter.batterMatchups[j]
+            for(let j = 0; j < curBatter.matchupList.length; j++){
+                let curMatchup = curBatter.matchupList[j];
                 teamTotalBatterMatchups.push(curMatchup);
             }//for: j
         }//for: i
 
         let teamTotalBatter = new Batter(teamTotalBatterMatchups[0]);
-        teamTotalBatter.batterMatchups = teamTotalBatterMatchups;
-        teamTotalBatter.batterId = 'total';
+        teamTotalBatter.matchupList = teamTotalBatterMatchups;
+        teamTotalBatter.playerId = 'total';
         teamTotalBatter.firstName = 'Total';
         teamTotalBatter.lastName = '';
 
@@ -65,15 +65,15 @@ class Team {
 
         for(let i = 0; i < this.pitcherList.length; i++) {
             let curPitcher = this.pitcherList[i];
-            for(let j = 0; j < curPitcher.pitcherMatchups.length; j++){
-                let curMatchup = curPitcher.pitcherMatchups[j]
+            for(let j = 0; j < curPitcher.matchupList.length; j++){
+                let curMatchup = curPitcher.matchupList[j]
                 teamTotalPitcherMatchups.push(curMatchup);
             }//for: j
         }//for: i
 
         let teamTotalPitcher = new Pitcher(teamTotalPitcherMatchups[0]);
-        teamTotalPitcher.pitcherMatchups = teamTotalPitcherMatchups;
-        teamTotalPitcher.pitcherId = 'total';
+        teamTotalPitcher.matchupList = teamTotalPitcherMatchups;
+        teamTotalPitcher.playerId = 'total';
         teamTotalPitcher.firstName = 'Total';
         teamTotalPitcher.lastName = '';
 
@@ -83,7 +83,7 @@ class Team {
 
     /**
         Requires: Exists a player in this.playerList matching @param playerId
-        Ensures: Return of Player object matching t@param playerId
+        Ensures: Return of Player object matching @param playerId
     */
     getPlayer(playerId){
         let i = 0;

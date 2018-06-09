@@ -40,7 +40,7 @@ function loadBatterList(matchupList){
         }//while: j
 
         if (j === batterList.length){
-            let newBatter = new Batter(curMatchup.batterId, curMatchup);
+            let newBatter = new Batter(curMatchup);
             batterList.push(newBatter);
         }//if:
 
@@ -71,7 +71,7 @@ function loadPitcherList(matchupList){
         }//while: j
 
         if (j === pitcherList.length){
-            let newPitcher = new Pitcher(curMatchup.pitcherId, curMatchup);
+            let newPitcher = new Pitcher(curMatchup);
             pitcherList.push(newPitcher);
         }//if: not found
 
@@ -144,7 +144,7 @@ function addBaseRunningToBatters(matchupList, batterList){
             let k = 0;
 
             while(k < batterList.length){
-                if (batterList[k].batterId == curRunner.runnerId){
+                if (batterList[k].playerId == curRunner.runnerId){
                     batterList[k].baseRunnerList.push(curRunner);
                     k = batterList.length + 1;
                 } else {
@@ -180,7 +180,7 @@ function getTeamById(teamId){
 function getBatterById(batterId){
     for (let i = 0; i < rootBatterList.length; i++){
         let curBatter = rootBatterList[i];
-        if(batterId === curBatter.batterId){
+        if(batterId === curBatter.playerId){
             return curBatter;
         }//if:
     }//for:
@@ -194,7 +194,7 @@ function getBatterById(batterId){
 function getPitcherById(pitcherId){
     for (let i = 0; i < rootPitcherList.length; i++){
         let curPitcher = rootPitcherList[i];
-        if(pitcherId === curPitcher.pitcherId){
+        if(pitcherId === curPitcher.playerId){
             return curPitcher;
         }//if:
     }//for:

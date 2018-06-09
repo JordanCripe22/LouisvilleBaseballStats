@@ -225,11 +225,11 @@ class Matchup{
     }
 
     isBatter(batter){
-        return this.batterId === batter.batterId;
+        return this.batterId === batter.playerId;
     }
 
     isPitcher(pitcher){
-        return this.pitcherId === pitcher.pitcherId;
+        return this.pitcherId === pitcher.playerId;
     }
 
     countOuts(){

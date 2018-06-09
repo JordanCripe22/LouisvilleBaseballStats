@@ -1,7 +1,7 @@
 class SprayChart {
     constructor(batter){
         this.batter = batter;
-        this.matchupList = batter.batterMatchups;
+        this.matchupList = batter.matchupList;
         this.directionList = this.groupByDirection();
 
 

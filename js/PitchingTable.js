@@ -361,7 +361,7 @@ class PitchingTable{
             if (curPitcherId === 'total'){
                 curRowIndex++;
                 hiddenPitchers.push(this.pitcherList[curPitcherIndex])
-            } else if(curPitcherId === this.pitcherList[curPitcherIndex].pitcherId){
+            } else if(curPitcherId === this.pitcherList[curPitcherIndex].playerId){
 
                 let backTrackIndex = visiblePitchers.length - 1;
                 let indexToInsert = -1;
@@ -510,9 +510,9 @@ class PitchingTable{
             let pitcherCell = document.createElement('th');
             pitcherCell.classList.add('header-main-col-1');
             pitcherCell.classList.add('pitcher-col');
-            pitcherCell.setAttribute('pitcher-id', pitcherStats.pitcherId);
+            pitcherCell.setAttribute('pitcher-id', pitcherStats.playerId);
 
-            if (pitcherStats.pitcherId === 'total') {
+            if (pitcherStats.playerId === 'total') {
                 pitcherRow.classList.add('total');
                 pitcherCell.style.backgroundColor = '#cccccc';
                 pitcherCell.style.color = 'black';
@@ -521,7 +521,7 @@ class PitchingTable{
                 let pitcherTag = document.createElement('a');
                 pitcherTag.setAttribute('href', 'pitcher.html');
                 pitcherTag.onclick = function(){
-                    sessionStorage.setItem('curPitcherId', pitcherStats.pitcherId);
+                    sessionStorage.setItem('curPitcherId', pitcherStats.playerId);
                 }
 
                 pitcherTag.textContent = pitcherStats.firstName + " " + pitcherStats.lastName;
@@ -565,8 +565,8 @@ class PitchingTable{
     filterMatchups(pitcher){
 
         let i = 0;
-        let matched = pitcher.pitcherMatchups;
-        let matchupList = pitcher.pitcherMatchups;
+        let matched = pitcher.matchupList;
+        let matchupList = pitcher.matchupList;
 
         while (i < this.filterList.length){
 

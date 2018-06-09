@@ -350,7 +350,7 @@ class BattingTable{
             if (curBatterId === 'total'){
                 curRowIndex++;
                 hiddenBatters.push(this.batterList[curBatterIndex])
-            } else if(curBatterId === this.batterList[curBatterIndex].batterId){
+            } else if(curBatterId === this.batterList[curBatterIndex].playerId){
 
                 let backTrackIndex = visibleBatters.length - 1;
                 let indexToInsert = -1;
@@ -496,9 +496,9 @@ class BattingTable{
             let batterCell = document.createElement('th');
             batterCell.classList.add('header-main-col-1');
             batterCell.classList.add('batter-col');
-            batterCell.setAttribute('batter-id', batterStats.batterId);
+            batterCell.setAttribute('batter-id', batterStats.playerId);
 
-            if (batterStats.batterId === 'total') {
+            if (batterStats.playerId === 'total') {
                 batterRow.classList.add('total');
                 batterCell.style.backgroundColor = '#cccccc';
                 batterCell.style.color = 'black';
@@ -507,7 +507,7 @@ class BattingTable{
                 let batterTag = document.createElement('a');
                 batterTag.setAttribute('href', 'batter.html');
                 batterTag.onclick = function(){
-                    sessionStorage.setItem('curBatterId', batterStats.batterId);
+                    sessionStorage.setItem('curBatterId', batterStats.playerId);
                 }
 
                 batterTag.textContent = batterStats.firstName + " " + batterStats.lastName;
@@ -547,8 +547,8 @@ class BattingTable{
     */
     filterMatchups(batter){
         let i = 0;
-        let matched = batter.batterMatchups;
-        let matchupList = batter.batterMatchups;
+        let matched = batter.matchupList;
+        let matchupList = batter.matchupList;
 
         while (i < this.filterList.length){
 
