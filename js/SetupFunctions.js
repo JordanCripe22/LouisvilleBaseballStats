@@ -78,6 +78,7 @@ function loadBatterList(matchupList){
         if (j === batterList.length){
             let player = getPlayerById(curMatchup.batterId, curMatchup.batterTeam);
             let newBatter = new Batter(player);
+            newBatter.matchupList.push(matchupList[i]);
             batterList.push(newBatter);
         }//if:
 
@@ -110,6 +111,7 @@ function loadPitcherList(matchupList){
         if (j === pitcherList.length){
             let player = getPlayerById(curMatchup.pitcherId, curMatchup.pitcherTeam);
             let newPitcher = new Pitcher(player);
+            newPitcher.matchupList.push(matchupList[i]);
             pitcherList.push(newPitcher);
         }//if: not found
 
@@ -166,35 +168,6 @@ function loadTeamList(batterList, pitcherList){
     }//for:
     return teamList;
 }//loadTeamList
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-/**
-    @param batterList Type: Array of Batter objects
-    @param pitcherList Type: Array of Pitcher objects
-    Return Type: Array of Team objects
-*/
-function addBaseRunningToBatters(matchupList, batterList){
-    for (let i = 0; i < matchupList.length; i++){
-        let baseRunnerList = matchupList[i].baseRunnerList;
-        for (let j = 0; j < baseRunnerList.length; j++){
-
-            let curRunner = baseRunnerList[j];
-            let k = 0;
-
-            while(k < batterList.length){
-                if (batterList[k].playerId == curRunner.runnerId){
-                    batterList[k].baseRunnerList.push(curRunner);
-                    k = batterList.length + 1;
-                } else {
-                    k++;
-                }//if/else:
-            }//while: k
-
-        }//for: j
-    }//for: i
-    return batterList;
-}//addBaseRunningToBatters
-
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**

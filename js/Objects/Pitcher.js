@@ -7,7 +7,6 @@ class Pitcher extends Player {
         this.firstName = player.firstName;
         this.lastName = player.lastName;
         this.teamId = player.teamId;
-        this.batHand = player.batHand;
         this.throwHand = player.throwHand;
         this.freshmanYear = player.freshmanYear;
         this.position = player.position;

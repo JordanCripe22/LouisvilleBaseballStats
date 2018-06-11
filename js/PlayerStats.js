@@ -27,6 +27,7 @@ class PlayerStats {
         this.catchersInterference = 0;
 
         this.calcBasicStats(player.matchupList);
+        this.getCountStats(player.matchupList);
 
         /*
         *** NOT YET IMPLEMENTED ***
@@ -42,6 +43,24 @@ class PlayerStats {
         this.advancedOnThrow = 0;
         */
     }
+
+    getCountStats(matchupList){
+        let countArray = [[[],[],[]], [[],[],[]], [[],[],[]], [[],[],[]]];
+        let totalBalls = 0;
+        let totalStrikes = 0;
+        let totalAtBatsWithCount = 0;
+        for (let i = 0; i < matchupList.length; i++){
+            let balls = parseInt(matchupList[i].balls);
+            let strikes = parseInt(matchupList[i].strikes);
+            if(balls != 5 && strikes != 5){
+                totalBalls += balls;
+                totalStrikes += strikes;
+                totalAtBatsWithCount++;
+                countArray[balls][strikes].push(matchupList[i]);
+            }//if: has count
+        }//for: i
+        return countArray;
+    }//getCountStats
 
     resetStats(){
         this.singles = 0;

@@ -11,9 +11,6 @@ class Player{
         this.freshmanYear = null;
         this.position = null;
 
-        this.matchupList = null;
-        this.gameList = null;
-
     }//constructor
 
     initialize(firstName, lastName, teamId, batHand, throwHand, freshmanYear, position){

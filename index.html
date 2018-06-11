@@ -16,6 +16,7 @@
         <script src='js/Data/TeamData.js'></script>
         <script src='js/Data/MenuFilters.js'></script>
 
+        <script src='js/Objects/Runner.js'></script>
         <script src='js/Objects/Roster.js'></script>
         <script src='js/Objects/Player.js'></script>
         <script src='js/Objects/Team.js'></script>
@@ -23,7 +24,7 @@
         <script src='js/Objects/Pitcher.js'></script>
         <script src='js/Objects/Game.js'></script>
         <script src='js/Objects/Matchup.js'></script>
-        <script src='js/Objects/Runner.js'></script>
+
 
         <script src='js/SprayChart.js'></script>
         <script src='js/Consistency.js'></script>
@@ -226,8 +227,6 @@
             var rootMatchupList = loadMatchupList(matchupJSON['Matchups']);
             var rootBatterList = loadBatterList(rootMatchupList);
             var rootPitcherList = loadPitcherList(rootMatchupList);
-
-            rootBatterList = addBaseRunningToBatters(rootMatchupList, rootBatterList);
 
             var rootTeamList = loadTeamList(rootBatterList, rootPitcherList);
 

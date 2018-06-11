@@ -1,4 +1,4 @@
-class Batter extends Player{
+class Batter extends Player {
 
     constructor(player){
 
@@ -8,7 +8,6 @@ class Batter extends Player{
         this.lastName = player.lastName;
         this.teamId = player.teamId;
         this.batHand = player.batHand;
-        this.throwHand = player.throwHand;
         this.freshmanYear = player.freshmanYear;
         this.position = player.position;
 
@@ -16,8 +15,6 @@ class Batter extends Player{
         this.gameList = [];
 
         this.baseRunnerList = [];
-
-        this.batterStats = new BatterStats(this);
 
     }//constructor
 

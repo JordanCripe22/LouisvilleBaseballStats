@@ -40,12 +40,20 @@ class Matchup{
         this.runsBattedIn = jsonMatchup['rbi'];
 
         //Base Running
-        this.baseRunnerList = [];
+        this.baseRunnerList = []
 
-        for(let i = 0; i < jsonMatchup['baseRunnersResult'].length; i++){
-            let baseRunner = new Runner(jsonMatchup, i);
-            this.baseRunnerList.push(baseRunner);
-        }
+        for (let i = 0; i < jsonMatchup['baseRunners'].length; i++){
+            let runner = new Runner(jsonMatchup['baseRunners'][i]);
+            this.baseRunnerList.push(runner);
+        }//for:
+
+        this.runnerOnFirstId = jsonMatchup['onFirst']['runnerId'];
+        this.runnerOnSecondId = jsonMatchup['onSecond']['runnerId'];
+        this.runnerOnThirdId = jsonMatchup['onThird']['runnerId'];
+
+        this.onFirstPitcherResponsibleId = jsonMatchup['onFirst']['pitcherResponsible'];
+        this.onSecondPitcherResponsibleId = jsonMatchup['onSecond']['pitcherResponsible'];
+        this.onThirdpitcherResponsibleId = jsonMatchup['onThird']['pitcherResponsible'];
 
         this.dateValue = calcDateValue(jsonMatchup);
         this.timeValue = calcTimeValue(jsonMatchup);
