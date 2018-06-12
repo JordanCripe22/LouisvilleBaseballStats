@@ -114,9 +114,7 @@ function loadPitcherList(matchupList){
             newPitcher.matchupList.push(matchupList[i]);
             pitcherList.push(newPitcher);
         }//if: not found
-
     }//for: i
-
     return pitcherList;
 }//loadPitcherList
 

@@ -354,7 +354,6 @@ function parsePlateAppearances(matchupList){
         Only returns the @param lastX Matchup objects
 */
 function parseLastAppearances(lastX, matchupList){
-    let matched = [];
     let matched = orderMatchupsDescending(matchupList);
     matched = parsePlateAppearances(matched);
     return matched.splice(matched.length - lastX, lastX);

@@ -228,6 +228,8 @@
             var rootBatterList = loadBatterList(rootMatchupList);
             var rootPitcherList = loadPitcherList(rootMatchupList);
 
+            rootMatchupList = mergeSort(rootMatchupList);
+
             var rootTeamList = loadTeamList(rootBatterList, rootPitcherList);
 
             //Global Variable: ALL LOUISVILLE INFORMATION CAN BE FOUND HERE

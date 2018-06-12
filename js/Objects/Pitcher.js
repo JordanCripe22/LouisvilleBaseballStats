@@ -14,6 +14,8 @@ class Pitcher extends Player {
         this.matchupList = [];
         this.gameList = [];
 
+        this.responsibleForRunners = [];
+
     }//constructor
 
     updateStats(matchupList){

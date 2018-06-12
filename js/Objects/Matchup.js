@@ -51,9 +51,9 @@ class Matchup{
         this.runnerOnSecondId = jsonMatchup['onSecond']['runnerId'];
         this.runnerOnThirdId = jsonMatchup['onThird']['runnerId'];
 
-        this.onFirstPitcherResponsibleId = jsonMatchup['onFirst']['pitcherResponsible'];
-        this.onSecondPitcherResponsibleId = jsonMatchup['onSecond']['pitcherResponsible'];
-        this.onThirdpitcherResponsibleId = jsonMatchup['onThird']['pitcherResponsible'];
+        this.onFirstPitcherResponsibleId = jsonMatchup['onFirst']['pitcherResponsibleId'];
+        this.onSecondPitcherResponsibleId = jsonMatchup['onSecond']['pitcherResponsibleId'];
+        this.onThirdpitcherResponsibleId = jsonMatchup['onThird']['pitcherResponsibleId'];
 
         this.dateValue = calcDateValue(jsonMatchup);
         this.timeValue = calcTimeValue(jsonMatchup);
@@ -146,6 +146,23 @@ class Matchup{
         const resultList = ['1B', '2B', '3B', 'HR', 'BS']
 
         return resultList.indexOf(this.result) !== -1;
+    }
+
+    isRunnerIdOnBase(runnerId){
+        let tempString = "";
+
+        if (this.runnerOnFirstId === runnerId){
+            tempString += "1";
+        }
+
+        if (this.runnerOnSecondId === runnerId){
+            tempString += "2"
+        }
+
+        if (this.runnerOnThirdId === runnerId){
+            tempString += "3"
+        }
+        return parseInt(tempString);
     }
 
     isLeftyBatter(){
