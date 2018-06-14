@@ -22,7 +22,9 @@
         <script src='js/Objects/Team.js'></script>
         <script src='js/Objects/Batter.js'></script>
         <script src='js/Objects/Pitcher.js'></script>
-        <script src='js/Objects/Game.js'></script>
+        <script src='js/Objects/PlayerGame.js'></script>
+        <script src='js/Objects/BatterGame.js'></script>
+        <script src='js/Objects/PitcherGame.js'></script>
         <script src='js/Objects/Matchup.js'></script>
 
 
@@ -225,10 +227,11 @@
             //Global Variables: Functions loaded from SetupFunctions.js
             var rootRosterList = loadRosterList(rosterData);
             var rootMatchupList = loadMatchupList(matchupJSON['Matchups']);
+            rootMatchupList = mergeSort(rootMatchupList);
             var rootBatterList = loadBatterList(rootMatchupList);
             var rootPitcherList = loadPitcherList(rootMatchupList);
 
-            rootMatchupList = mergeSort(rootMatchupList);
+            rootPitcherList = addResponsibleRunners(rootMatchupList, rootPitcherList);
 
             var rootTeamList = loadTeamList(rootBatterList, rootPitcherList);
 
@@ -275,6 +278,10 @@
             //Initialize tables with no filters
             updateBattingStats();
             updatePitchingStats();
+
+            
+
+
 
         </script>
 

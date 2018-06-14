@@ -6,6 +6,7 @@ class PitcherStats extends PlayerStats{
 
     countInningsPitched(){
         let outsRecorded = 0;
+
         for(let i = 0; i < this.matchupList.length; i++){
             outsRecorded += this.matchupList[i].countOuts();
         }//for: i
@@ -20,6 +21,27 @@ class PitcherStats extends PlayerStats{
         }//for: i
         return (Math.floor(outsRecorded / 3) + (outsRecorded % 3) * 0.1).toFixed(1);
     }//displayInningsPitched
+
+    countEarnedRuns(){
+        let count = 0;
+        for(let i = 0; i < this.gameList.length; i++){
+            count += this.gameList[i].earnedRuns;
+        }//for: i
+        return count;
+    }
+
+    countRuns(){
+        let count = 0;
+        for(let i = 0; i < this.gameList.length; i++){
+            let curGame = this.gameList[i];
+            count += curGame.earnedRuns + curGame.unearnedRuns;
+        }//for: i
+        return count;
+    }
+
+    getERA(){
+        return (this.countEarnedRuns() / this.countInningsPitched() * 9).toFixed(2);
+    }
 
     getWHIP(){
         if(this.countInningsPitched() === 0){

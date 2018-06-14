@@ -22,7 +22,9 @@
         <script src='js/Objects/Team.js'></script>
         <script src='js/Objects/Batter.js'></script>
         <script src='js/Objects/Pitcher.js'></script>
-        <script src='js/Objects/Game.js'></script>
+        <script src='js/Objects/PlayerGame.js'></script>
+        <script src='js/Objects/BatterGame.js'></script>
+        <script src='js/Objects/PitcherGame.js'></script>
         <script src='js/Objects/Matchup.js'></script>
 
 
@@ -43,11 +45,14 @@
             //Global Variables: Functions loaded from SetupFunctions.js
             var rootRosterList = loadRosterList(rosterData);
             var rootMatchupList = loadMatchupList(matchupJSON['Matchups']);
+            rootMatchupList = mergeSort(rootMatchupList);
             var rootBatterList = loadBatterList(rootMatchupList);
             var rootPitcherList = loadPitcherList(rootMatchupList);
+
+            rootPitcherList = addResponsibleRunners(rootMatchupList, rootPitcherList);
+
             var rootTeamList = loadTeamList(rootBatterList, rootPitcherList);
 
-            console.log(pitcherData);
         </script>
 
         <div id='playerContainer'>
@@ -151,30 +156,6 @@
                 console.log('IP: ' + inningsPitched);
             }
 
-            function inMiddleInningFirstBatter(){
-                let matched = [];
-                for(let i = 0; i < curPitcher.gameList.length; i++){
-                    let firstMatchup = curPitcher.gameList[i].matchupList[0];
-                    if (firstMatchup.inningOrder != '0'){
-                        matched.push(firstMatchup);
-                    }
-                }
-                return matched;
-            }
-
-            function firstBatterOfInning(){
-                let matched = [];
-                for(let i = 0; i < curPitcher.gameList.length; i++){
-                    matched.push(curPitcher.gameList[i].matchupList[0]);
-                    for(let j = 1; j < curPitcher.gameList[i].matchupList.length; j++){
-                        if (curPitcher.gameList[i].matchupList[j].inningOrder === '0'){
-                            matched.push(curPitcher.gameList[i].matchupList[j]);
-                        }
-                    }
-                }
-                return matched;
-            }
-
             var curPitcher = null;
             var curPitcherStats = null;
 
@@ -182,13 +163,12 @@
             window.onload = initialize(sessionStorage.getItem('curPitcherId'));
 
             curPitcher.loadGameList();
+            console.log(curPitcher.gameList);
 
-            let relieverStatsMiddleInning = new PitcherStats(curPitcher);
-            relieverStatsMiddleInning.calcBasicStats(inMiddleInningFirstBatter());
-
-            let relieverStatsFirstBatterInning = new PitcherStats(curPitcher);
-            relieverStatsFirstBatterInning.calcBasicStats(firstBatterOfInning());
-
+            for(let i = 0; i < curPitcher.gameList.length; i++){
+                let curGame = curPitcher.gameList[i];
+                curGame.loadRuns();
+            }
 
         </script>
     </body>

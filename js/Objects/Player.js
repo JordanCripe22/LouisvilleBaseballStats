@@ -54,7 +54,7 @@ class Player{
             let j = 0;
             while (j < this.gameList.length){
                 let curGame = this.gameList[j]
-                if (curGame.isBatterGame(curMatchup)){
+                if (curGame.isGame(curMatchup)){
                     this.gameList[j].addMatchup(curMatchup);
                     j = this.gameList.length + 1;
                 } else {
@@ -63,7 +63,7 @@ class Player{
             }//while: j
 
             if (j === this.gameList.length){
-                let tempBatterGame = new BatterGame(curMatchup);
+                let tempBatterGame = new PlayerGame(curMatchup.gameId, this.playerId);
                 this.gameList.push(tempBatterGame);
             }//if:
         }//for: i

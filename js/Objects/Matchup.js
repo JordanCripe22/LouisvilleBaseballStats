@@ -39,28 +39,20 @@ class Matchup{
         this.advancedMenOnBase = jsonMatchup['advancedMenOnBase'];
         this.runsBattedIn = jsonMatchup['rbi'];
 
-        //Base Running
-        this.baseRunnerList = []
-
-        for (let i = 0; i < jsonMatchup['baseRunners'].length; i++){
-            let runner = new Runner(jsonMatchup['baseRunners'][i]);
-            this.baseRunnerList.push(runner);
-        }//for:
-
-        this.runnerOnFirstId = jsonMatchup['onFirst']['runnerId'];
-        this.runnerOnSecondId = jsonMatchup['onSecond']['runnerId'];
-        this.runnerOnThirdId = jsonMatchup['onThird']['runnerId'];
-
-        this.onFirstPitcherResponsibleId = jsonMatchup['onFirst']['pitcherResponsibleId'];
-        this.onSecondPitcherResponsibleId = jsonMatchup['onSecond']['pitcherResponsibleId'];
-        this.onThirdpitcherResponsibleId = jsonMatchup['onThird']['pitcherResponsibleId'];
-
         this.dateValue = calcDateValue(jsonMatchup);
         this.timeValue = calcTimeValue(jsonMatchup);
 
         this.gameId = this.awayTeam + '_' + this.homeTeam + '_' + this.dateValue.toString();
 
-        this.JSON = jsonMatchup;
+        //Base Running
+        this.baseRunnerList = [];
+
+        for (let i = 0; i < jsonMatchup['baseRunners'].length; i++){
+            let runner = new Runner(this.gameId, jsonMatchup['baseRunners'][i]);
+            this.baseRunnerList.push(runner);
+        }//for:
+
+        //this.JSON = jsonMatchup;
 
         function calcDateValue(jsonMatchup){
             let dateValue = parseInt(jsonMatchup['gameYear']) * 1000000;
@@ -141,6 +133,17 @@ class Matchup{
         return opponentList.indexOf(this.pitcherTeam) !== -1
             && opponentList.indexOf(this.batterTeam) !== -1;
     }
+
+    getExtraResponsible(){
+        let runnerList = [];
+        for(let i = 0; i < this.baseRunnerList.length; i++){
+            let curRunner = this.baseRunnerList[i];
+            if(this.pitcherId !== curRunner.pitcherResponsibleId){
+                runnerList.push(curRunner);
+            }//if:
+        }//for: i
+        return runnerList;
+    }//getExtraResponsible
 
     isHit(){
         const resultList = ['1B', '2B', '3B', 'HR', 'BS']
@@ -297,6 +300,10 @@ class Matchup{
 
     isPitcher(pitcher){
         return this.pitcherId === pitcher.playerId;
+    }
+
+    isGame(game){
+        return this.gameId === game.gameId;
     }
 
     countOuts(){

@@ -5,6 +5,7 @@ class PlayerStats {
         this.playerId = player.playerId;
         this.firstName = player.firstName;
         this.lastName = player.lastName;
+        this.gameList = player.gameList;
 
         this.singles = 0;
         this.doubles = 0;

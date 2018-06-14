@@ -22,9 +22,10 @@
         <script src='js/Objects/Team.js'></script>
         <script src='js/Objects/Batter.js'></script>
         <script src='js/Objects/Pitcher.js'></script>
-        <script src='js/Objects/Game.js'></script>
+        <script src='js/Objects/PlayerGame.js'></script>
+        <script src='js/Objects/BatterGame.js'></script>
+        <script src='js/Objects/PitcherGame.js'></script>
         <script src='js/Objects/Matchup.js'></script>
-
 
         <script src='js/SprayChart.js'></script>
         <script src='js/Consistency.js'></script>
@@ -157,16 +158,12 @@
 
             window.onload = initialize(sessionStorage.getItem('curBatterId'));
 
-
-            //curBatter.consistencyRating(curBatter.allMatchups);
             curBatter.loadGameList();
 
             let consistency = new Consistency(curBatter, true);
             let sprayChart = new SprayChart(curBatter);
 
-            console.log(consistency.continuoslyGroupBattingAverage(curBatter.matchupList, 10, 1));
-
-
+            console.log(curBatter.gameList);
         </script>
     </body>
 

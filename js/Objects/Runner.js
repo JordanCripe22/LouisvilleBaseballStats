@@ -1,12 +1,17 @@
 class Runner {
 
-    constructor(jsonRunner){
+    constructor(gameId, jsonRunner){
+        this.gameId = gameId;
 
         this.result = jsonRunner['result'];
         this.playerId = jsonRunner['playerId'];
+        this.pitcherResponsibleId = jsonRunner['pitcherResponsible'];
         this.runScored = jsonRunner['runScored'];
-
     }//constructor
+
+    isGame(game){
+        return game.gameId === this.gameId;
+    }
 
     isOut(){
 

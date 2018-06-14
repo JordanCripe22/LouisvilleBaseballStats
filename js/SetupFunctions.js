@@ -1,7 +1,7 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
     @param jsonRosterList Type: JSON Array
-    Return Type: Array of Matchup objects
+    @return Type: Array of Matchup objects
 */
 function loadRosterList(jsonRosterList){
     let rosterList = [];
@@ -33,11 +33,10 @@ function loadRosterList(jsonRosterList){
     return rosterList;
 }//loadRosterList
 
-
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
     @param jsonMatchupList Type: JSON Array
-    Return Type: Array of Matchup objects
+    @return Type: Array of Matchup objects
 */
 function loadMatchupList(jsonMatchupList){
     let matchupList = [];
@@ -55,7 +54,7 @@ function loadMatchupList(jsonMatchupList){
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
     @param matchupList Type: Array of Matchup objects
-    Return Type: Array of Batter objects
+    @return Type: Array of Batter objects
 */
 function loadBatterList(matchupList){
 
@@ -90,7 +89,7 @@ function loadBatterList(matchupList){
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
     @param matchupList Type: Array of Matchup objects
-    Return Type: Array of Pitcher objects
+    @return Type: Array of Pitcher objects
 */
 function loadPitcherList(matchupList){
     let pitcherList = [];
@@ -122,7 +121,7 @@ function loadPitcherList(matchupList){
 /**
     @param batterList Type: Array of Batter objects
     @param pitcherList Type: Array of Pitcher objects
-    Return Type: Array of Team objects
+    @return Type: Array of Team objects
 */
 function loadTeamList(batterList, pitcherList){
     let teamList = [];
@@ -170,7 +169,7 @@ function loadTeamList(batterList, pitcherList){
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
     @param teamId Type: String
-    Return Type: Team object
+    @return Type: Team object
 */
 function getTeamById(teamId){
     for (let i = 0; i < rootTeamList.length; i++){
@@ -184,7 +183,7 @@ function getTeamById(teamId){
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
     @param batterId Type: String
-    Return Type: Batter object
+    @return Type: Batter object
 */
 function getBatterById(batterId){
     for (let i = 0; i < rootBatterList.length; i++){
@@ -197,8 +196,33 @@ function getBatterById(batterId){
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
+    @param matchupList Type: Array of Matchup objects
+    @param pitcherList Type: Array of Pitcher objects
+    @return Type: Array of Pitcher objects
+*/
+function addResponsibleRunners(matchupList, pitcherList){
+    for(let i = 0; i < matchupList.length; i++){
+        let runnerList = matchupList[i].getExtraResponsible();
+        count += runnerList.length;
+        for (let j = 0; j < runnerList.length; j++){
+            let k = 0;
+            while (k < pitcherList.length){
+                if(pitcherList[k].playerId === runnerList[j].pitcherResponsibleId){
+                    pitcherList[k].extraRunners.push(runnerList[j]);
+                    k = pitcherList.length;
+                } else {
+                    k++;
+                }//if/else:
+            }//while: k
+        }//for: j
+    }//for: i
+    return pitcherList;
+}//addResponsibleRunners
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/**
     @param teamId Type: String
-    Return Type: Pitcher object
+    @return Type: Pitcher object
 */
 function getPitcherById(pitcherId){
     for (let i = 0; i < rootPitcherList.length; i++){
