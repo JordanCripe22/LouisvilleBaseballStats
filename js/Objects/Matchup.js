@@ -171,8 +171,8 @@ class Matchup{
     }
 
     isLeftyBatter(){
-        let batter = getPlayerById(this.batterId);
-        let pitcher = getPlayerById(this.pitcherId)
+        let batter = getPlayerById(this.batterId, this.batterTeam);
+        let pitcher = getPlayerById(this.pitcherId, this.pitcherTeam);
         if (batter.batHand === 'L') {
             return true;
         } else if(batter.batHand === 'S' && pitcher.throwHand === 'R') {
@@ -183,7 +183,7 @@ class Matchup{
     }
 
     isLeftyPitcher(){
-        let pitcher = getPlayerById(this.pitcherId);
+        let pitcher = getPlayerById(this.pitcherId, this.pitcherTeam);
         if (pitcher.throwHand === 'L') {
             return true;
         } else {
@@ -192,8 +192,8 @@ class Matchup{
     }
 
     isRightyBatter(){
-        let batter = getPlayerById(this.batterId);
-        let pitcher = getPlayerById(this.pitcherId)
+        let batter = getPlayerById(this.batterId, this.batterTem);
+        let pitcher = getPlayerById(this.pitcherId, this.pitcherTeam)
         if (batter.batHand === 'R') {
             return true;
         } else if(batter.batHand === 'S' && pitcher.throwHand === 'L') {
@@ -204,7 +204,7 @@ class Matchup{
     }
 
     isRightyPitcher(){
-        let pitcher = getPlayerById(this.pitcherId);
+        let pitcher = getPlayerById(this.pitcherId, this.pitcherTeam);
         if (pitcher.throwHand === 'R') {
             return true;
         } else {

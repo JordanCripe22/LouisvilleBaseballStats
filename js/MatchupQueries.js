@@ -279,6 +279,55 @@ function parseMatchupsVsPitcher(pitcherIdList, matchupList){
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /**
+    @param restraintList Type: Array of Strings
+    @param matchupList Type: Array of Matchup Objects
+    Return Type: Array of Matchup Objects
+        Only return Matchup objects if the restraint is in @param restraintList
+*/
+function parseMatchupsVsPitcherType(restraintList, matchupList){
+    let matched = [];
+    for(let i = 0; i < matchupList.length; i++){
+        let curMatchup = matchupList[i];
+
+        if (restraintList.indexOf('lefty') !== -1){
+            if (restraintList.indexOf('starter') !== -1){
+                if(curMatchup.starertReliever === 'S' && curMatchup.isLeftyPitcher()){
+                    matched.push(curMatchup);
+                }//if:
+            } else if (restraintList.indexOf('reliever') !== -1){
+                if(curMatchup.starterReliever === 'R' && curMatchup.isLeftyPitcher()){
+                    matched.push(curMatchup);
+                }//if/else:
+            } else if(curMatchup.isLeftyPitcher()){
+                matched.push(curMatchup);
+            }//if/else:
+        } else if (restraintList.indexOf('righty') !== -1){
+            if (restraintList.indexOf('starter') !== -1){
+                if(curMatchup.starterReliever === 'S' && curMatchup.isRightyPitcher()){
+                    matched.push(curMatchup);
+                }//if:
+            } else if (restraintList.indexOf('reliever') !== -1){
+                if(curMatchup.starterReliever === 'R' && curMatchup.isRightyPitcher()){
+                    matched.push(curMatchup);
+                }//if:
+            } else if(curMatchup.isRightyPitcher()){
+                matched.push(curMatchup);
+            }//if/else:
+        } else if (restraintList.indexOf('starter') !== -1){
+            if (curMatchup.starterReliever === 'S'){
+                matched.push(curMatchup);
+            }//if:
+        } else if (restraintList.indexOf('reliever') !== -1){
+            if (curMatchup.starterReliever === 'R'){
+                matched.push(curMatchup);
+            }//if
+        }//if/else:
+    }//for: loop matchups
+    return matched;
+}//getMatchupsWithOuts
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/**
     @param lowerBound Type: Integer
     @param upperBound Type: Integer
     @param matchupList Type: Array of Matchup Objects

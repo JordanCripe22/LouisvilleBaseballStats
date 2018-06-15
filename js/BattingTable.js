@@ -581,7 +581,8 @@ class BattingTable{
             } else if (this.filterList[i].categoryValue === "opposingTeam"){
                 matched = parseMatchupsVsTeams(restraintList, matchupList);
             } else if (this.filterList[i].categoryValue === "opposingPitcher"){
-                matched = parseMatchupsVsPitcher(restraintList, matchupList);
+                matched = parseMatchupsVsPitcherType(restraintList, matchupList);
+                //TODO: Once the pitcher Ids, are available add function
             } else if (this.filterList[i].categoryValue === "gameScore"){
                 matched = parseMatchupsScoreBetween(restraintList, matchupList);
             } else if (this.filterList[i].categoryValue === "latest"){
