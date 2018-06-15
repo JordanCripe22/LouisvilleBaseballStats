@@ -2,9 +2,11 @@ class Matchup{
 
     constructor(jsonMatchup){
 
-        //Game Info
+        //Team Info
         this.awayTeam = jsonMatchup['awayTeam'];
         this.homeTeam = jsonMatchup['homeTeam'];
+
+        //Game Time Info
         this.gameMonth = jsonMatchup['gameMonth'];
         this.gameDay = jsonMatchup['gameDay'];
         this.gameYear = jsonMatchup['gameYear'];
@@ -27,7 +29,7 @@ class Matchup{
         this.balls = jsonMatchup['balls'];
         this.strikes = jsonMatchup['strikes'];
         this.outs = jsonMatchup['outs'];
-        this.inningOrder = jsonMatchup['inningOrder'][0];
+        this.inningOrder = jsonMatchup['inningOrder'];
         this.starterReliever = jsonMatchup['starterReliever'];
         this.batterTeamScore = jsonMatchup['batterTeamScore'];
         this.pitcherTeamScore = jsonMatchup['pitcherTeamScore'];

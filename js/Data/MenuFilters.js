@@ -26,7 +26,7 @@ var battingFilterMenuMap = {
         "value":"menOnBase",
         "text":"Men On Base",
         "lvl2":[
-            {"value":"", "text":"Bases Empty"},
+            {"value":"0", "text":"Bases Empty"},
             {"value":"123", "text":"Bases Loaded"},
             {"value":"2;3;12;13;23;123", "text":"Scoring Position"},
             {"value":"1;2;3;12;13;23;123", "text":"On Base"},
@@ -164,7 +164,7 @@ var pitchingFilterMenuMap = {
         "value":"menOnBase",
         "text":"Men On Base",
         "lvl2":[
-            {"value":"", "text":"Bases Empty"},
+            {"value":"0", "text":"Bases Empty"},
             {"value":"123", "text":"Bases Loaded"},
             {"value":"2;3;12;13;23;123", "text":"Scoring Position"},
             {"value":"1;2;3;12;13;23;123", "text":"On Base"},

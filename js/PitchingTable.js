@@ -63,7 +63,7 @@ class PitchingTable{
         filterTable.appendChild(newTableBody);
 
         this.filterList = [];
-    }
+    }//removeAllFilters
 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     /**
@@ -236,7 +236,6 @@ class PitchingTable{
                 }//if: not sorted column
             });//mouseout
         }//for: header columns
-
     }//addColumnHoverEventListeners
 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

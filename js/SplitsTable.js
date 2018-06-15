@@ -1,0 +1,10 @@
+class SplitsTable {
+
+    constructor(){
+
+    }
+
+    initialize(){
+
+    }
+}
