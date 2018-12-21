@@ -44,6 +44,15 @@ class PitcherGame extends PlayerGame {
         return this.earnedRuns + this.unearnedRuns;
     }
 
+    /**
+        getFirstMatchup finds the first matchup of the player's game
+        @return Type: Matchup Object
+    */
+    getFirstMatchup(){
+        return orderMatchupsAscending(this.matchupList)[0];
+    }
+
+
 
 
 

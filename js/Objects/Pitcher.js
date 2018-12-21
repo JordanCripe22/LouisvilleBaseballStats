@@ -26,7 +26,6 @@ class Pitcher extends Player {
         console.log(this.firstName + ' ' + this.lastName + ' ERA: ' + this.pitcherStats.getERA());
     }//updateStats
 
-
     loadGameList(){
         //load matchups
         for (let i = 0; i < this.matchupList.length; i++){

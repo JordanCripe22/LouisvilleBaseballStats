@@ -118,6 +118,10 @@ class PlayerStats {
         + this.walks + this.sacFlys;
     }
 
+    countGamesStarted(){
+        
+    }
+
     calcBasicStats(matchupList){
         this.resetStats();
         for (let i = 0; i < matchupList.length; i++){
